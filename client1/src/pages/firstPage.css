@@ -1,0 +1,23 @@
+.div-first {
+  /* background-color: cadetblue; */
+/* background-image: 'https://preview.free3d.com/img/2016/12/2279323050384033087/dzn37m0l-900.jpg'; */
+
+ 
+  color: rgb(168, 214, 255);
+  height: 59em;
+}
+
+.div-spinner {
+  text-align: center;
+  padding-bottom: 4.5;
+}
+
+.p-name {
+  text-align: center;
+  font-size: 6em;
+  padding-left: 4.1em;
+  padding-right: 4.1em;
+  padding-top: 4.1em;
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Segoe UI,
+    Tahoma, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Open Sans, sans-serif;
+}
