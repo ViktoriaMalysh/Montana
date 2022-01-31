@@ -1,0 +1,42 @@
+.div-tickets{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+  ". . . titleTickets titleTickets . . ."
+  ". ticketCard ticketCard ticketCard ticketCard ticketCard ticketCard ."
+  ;
+}
+
+.div-tickets-title{
+  padding-top: 2em;
+  grid-area: titleTickets;
+  width: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 300;
+  font-family: 'Raleway',;
+}
+
+.div-tickets-cards{
+  margin-left: 3em;
+  grid-area: ticketCard;
+  
+  /* background-color: aqua; */
+}
+
+.tickcard{
+
+  padding-left: 3.5em;
+}
+
+.p-ticket-country{
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  font-size: 1.5em;
+  font-weight: 300;
+  font-family: 'Raleway',;
+}
+
+.span-ticket-country{
+  font-style: italic;
+}

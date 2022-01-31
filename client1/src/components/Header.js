@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch, connect } from "react-redux";
+import { REQUESTED_SUCCEEDED_CLOSE_USER } from "../redux/types";
+import { fetchVerifyToken } from "../redux/actionUsers";
 
 function Header() {
+
+  const store = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const [admin, setAdmin] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    dispatch(fetchVerifyToken(token));
+    setTimeout(() => {
+      dispatch({ type: REQUESTED_SUCCEEDED_CLOSE_USER });
+    }, 1000);
+  }, []);
+
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -90,31 +106,20 @@ function Header() {
                 </Link>
               </Nav.Link>
 
-              <NavDropdown
-                title="Tickets"
-                id="collasible-nav-dropdown"
-                style={{ color: "white" }}
-              >
-                <NavDropdown.Item>
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    to={"/"}
-                  >
-                    Hotel Tickets
-                  </Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    to={"/"}
-                  >
-                    Avia Tickets
-                  </Link>
-                </NavDropdown.Item>
-              </NavDropdown>
+              <Nav.Link>
+                <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to={"/tickets"}
+                >
+                  Tickets
+                </Link>
+              </Nav.Link>
+
+              
             </Nav>
             <Nav>
-              <NavDropdown
+              {store.users.isAuth ? (
+                <NavDropdown
                 title="UserName"
                 id="collasible-nav-dropdown"
                 style={{ color: "white" }}
@@ -140,12 +145,23 @@ function Header() {
                 <NavDropdown.Item>
                   <Link
                     style={{ textDecoration: "none", color: "black" }}
-                    to={"/"}
+                    to={"/logout"}
                   >
                     Log Out
                   </Link>
                 </NavDropdown.Item>
               </NavDropdown>
+              ) : (
+                <Nav.Link>
+                <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to={"/login"}
+                >
+                  Sing In
+                </Link>
+              </Nav.Link>
+              )}
+              
             </Nav>
           </Navbar.Collapse>
         </Container>

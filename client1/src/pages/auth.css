@@ -1,0 +1,85 @@
+.div-auth {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "imgFon imgFon imgFon imgFon form1 form1 form1 form1";
+}
+
+.div-auth-left {
+  grid-area: imgFon;
+}
+
+.div-auth-right {
+  grid-area: form1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: ". formLogin formLogin formLogin . .";
+}
+
+.div-auth-form {
+  /* background-color: aqua; */
+  margin-top: 0em;
+  grid-area: formLogin;
+  padding-top: 3.5em;
+}
+
+.buttform-auth {
+  text-align: center;
+}
+
+.h4-auth {
+  font-weight: 300;
+  font-size: 1.6em;
+  font-family: "Raleway";
+}
+
+.p-auth-title {
+  margin-top: 3em;
+  font-weight: 300;
+  font-size: 1.3em;
+  font-family: "Raleway";
+}
+
+.button-auth {
+  background-color: white;
+  border-color: rgb(248, 200, 41);
+  color: rgb(255, 136, 0);
+  height: 2.8em;
+  width: 10em;
+  font-weight: 300;
+}
+
+.button-auth:hover {
+  background-color: rgb(252, 174, 59);
+  border-color: rgb(255, 196, 0);
+  color: rgb(255, 255, 255);
+  height: 2.8em;
+  width: 10em;
+  font-weight: 300;
+}
+
+.img-auth {
+  height: 900px;
+  width: 900px;
+}
+
+.option-style{
+  font-weight: 300;
+  font-size: 1.1em;
+  font-family: "Raleway";
+}
+
+.button-back{
+  height: 2em;
+  width: 3em;
+  background-color: white;
+  border-color: rgb(248, 200, 41);
+  color: rgb(255, 136, 0);
+}
+
+.button-back:hover{
+  height: 2em;
+  width: 3em;
+  background-color: rgb(252, 174, 59);
+  border-color: rgb(255, 196, 0);
+  color: rgb(255, 255, 255);
+}

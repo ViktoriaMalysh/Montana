@@ -12,7 +12,7 @@ const User = sequelize.define("users", {
   surname: DataTypes.TEXT,
   gender: DataTypes.TEXT,
   country: DataTypes.TEXT,
-  age: DataTypes.INTEGER,
+  dateOfBirth: DataTypes.TEXT,
   phone: DataTypes.INTEGER,
   email: DataTypes.TEXT,
   password: DataTypes.TEXT,
@@ -39,22 +39,8 @@ const SaleHotelTicket = sequelize.define("saleTickets", {
   discount: DataTypes.INTEGER,
 });
 
-const AviaTicket = sequelize.define("aviaTickets", {
-  id_user: DataTypes.INTEGER,  
-  num_stops: DataTypes.INTEGER,
-  price: DataTypes.INTEGER,    
-  trip_duration: DataTypes.TEXT,
-  departure_date: DataTypes.TEXT,
-  departure_time: DataTypes.TEXT,
-  arrival_time: DataTypes.TEXT,
-  cabin_class: DataTypes.TEXT,
-  airlines: DataTypes.TEXT,
-  arrival_date: DataTypes.TEXT,
-});
-
 module.exports = {
   User: User,
   HotelTicket: HotelTicket,
-  AviaTicket: AviaTicket,
   SaleHotelTicket: SaleHotelTicket,
 };

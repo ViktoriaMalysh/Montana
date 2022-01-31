@@ -1,0 +1,63 @@
+.div-login {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "imgFon imgFon imgFon imgFon form1 form1 form1 form1";
+}
+
+.div-left {
+  grid-area: imgFon;
+}
+
+.div-right {
+  grid-area: form1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: ". formLogin formLogin formLogin . .";
+}
+
+.div-form {
+  /* background-color: aqua; */
+  margin-top: 5em;
+  grid-area: formLogin;
+  padding-top: 10em;
+}
+
+.buttform {
+  text-align: center;
+}
+
+.h4-login {
+  font-weight: 300;
+  font-size: 1.6em;
+  font-family: "Raleway";
+}
+
+.p-login-title {
+  margin-top: 3em;
+  font-weight: 300;
+  font-size: 1.3em;
+  font-family: "Raleway";
+}
+
+.button-login {
+  background-color: white;
+  border-color: rgb(248, 200, 41);
+  color: rgb(255, 136, 0);
+  height: 2.8em;
+  width: 10em;
+  font-weight: 300;
+}
+
+.button-login:hover {
+  background-color: rgb(252, 174, 59);
+  border-color: rgb(255, 196, 0);
+  color: rgb(255, 255, 255);
+  height: 2.8em;
+  width: 10em;
+  font-weight: 300;
+}
+
+.img-login {
+  height: 900px;
+  width: 900px;
+}

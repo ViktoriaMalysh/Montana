@@ -9,6 +9,10 @@ import CountryFrance from "./pages/countries/france";
 import CountryEgypt from "./pages/countries/egypt";
 import CountryGreece from "./pages/countries/greece";
 import CountrySpain from "./pages/countries/spain";
+import Login from "./pages/Login";
+import Logout from "./pages/Login";
+import Auth from "./pages/Auth";
+import Tickets from "./pages/HotelTicket";
 
 // import HotelTicket from "./pages/tickets/HotelTicket";
 // import AviaTicket from "./pages/tickets/AviaTicket";
@@ -45,12 +49,17 @@ export default function AppNav() {
         <Route path="/country/greece" element={<CountryGreece />} />
         <Route path="/country/spain" element={<CountrySpain />} />
         <Route path="/country/germany" element={<CountryGermany />} />
+
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/logout" element={<Logout />} />
         {/* <Route path="/ticket/hotelTicket" element={<HotelTicket />} /> */}
         {/* <Route path="/ticket/aviaTicket" element={<AviaTicket />} /> */}
 
+        <Route path="/tickets" element={<Tickets />} />
 
-
-
+        
         <Route path="/" element={<HomePage />} />
         
         

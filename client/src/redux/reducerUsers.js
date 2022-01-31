@@ -23,7 +23,7 @@ import {
   USER_PHONE,
   COUNT_TICKET,
   COUNT_HOTEL_TICKET,
-  USER_DATE_OF_BIRTH,
+  COUNT_AVIA_TICKET,
 } from "./types";
 
 const initialState = {
@@ -34,9 +34,7 @@ const initialState = {
   userGender: "",
   userAge: 0,
   userCountry: "",
-
-  userDateOfBirth: "",
-    userPhone: 0,
+  userPhone: 0,
   userEmail: "",
   userPassword: "",
   userRole: 0,
@@ -63,14 +61,16 @@ export const reducerUsers = (state = initialState, action) => {
       return { ...state, userSurname: action.payload };
     case USER_GENDER:
       return { ...state, userGender: action.payload };
-    case USER_DATE_OF_BIRTH:
-      return { ...state, userDateOfBirth: action.payload };
+    case USER_AGE:
+      return { ...state, userAge: action.payload };
     case USER_COUNTRY:
       return { ...state, userCountry: action.payload };
     case USER_PHONE:
       return { ...state, userPhone: action.payload };
     case COUNT_HOTEL_TICKET:
       return { ...state, countHotelTickets: action.payload };
+    case COUNT_AVIA_TICKET:
+      return { ...state, countAviaTickets: action.payload };
     case USER_EMAIL:
       return { ...state, userEmail: action.payload };
     case USER_PASSWORD:

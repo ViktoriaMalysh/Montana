@@ -1,0 +1,113 @@
+.fon199 {
+  background: linear-gradient(45deg, #baeeed, #e6f1e1);
+  background-size: 100% 1050px ;
+}
+
+.home1 {
+  /* grid-area: content; */
+  background-color: rgba(255, 255, 255, 0.514);
+  border-radius: 2em;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    ". . text1 text1 ."
+    ". img11 img12 img13 ."
+    ". img14 img15 img16 ."
+    ". img17 img18 img19 .";
+  margin: 10em;
+  margin-top: 6em;
+
+  margin-block-end: 0;
+  padding: 5em;
+}
+
+.text3 {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+  grid-area: text1;
+  padding-bottom: 3em;
+}
+
+.text33 {
+  font-size: 3em;
+}
+
+.img11 {
+  grid-area: img11;
+  padding: 2em;
+  background-color: rgba(255, 255, 255, 0.87);
+  margin: 1em;
+  border-radius: 2em;
+}
+
+.img12 {
+  grid-area: img12;
+  padding: 2em;
+
+  background-color: rgba(255, 255, 255, 0.87);
+  margin: 1em;
+  border-radius: 2em;
+}
+
+.img13 {
+  grid-area: img13;
+  padding: 2em;
+  background-color: rgba(255, 255, 255, 0.87);
+  margin: 1em;
+  border-radius: 2em;
+}
+
+.img14 {
+  grid-area: img14;
+  padding: 2em;
+  padding-top: 5em;
+  background-color: rgba(255, 255, 255, 0.87);
+  margin: 1em;
+  border-radius: 2em;
+}
+
+.img15 {
+  grid-area: img15;
+  padding: 2em;
+  padding-top: 5em;
+  background-color: rgba(255, 255, 255, 0.87);
+  margin: 1em;
+  border-radius: 2em;
+}
+
+.img16 {
+  grid-area: img16;
+  padding: 2em;
+  padding-top: 5em;
+  background-color: rgba(255, 255, 255, 0.87);
+  margin: 1em;
+  border-radius: 2em;
+}
+
+.img17 {
+  grid-area: img17;
+  padding: 2em;
+  padding-top: 5em;
+  background-color: rgba(255, 255, 255, 0.87);
+  margin: 1em;
+  border-radius: 2em;
+}
+
+.img18 {
+  grid-area: img18;
+  padding: 2em;
+  padding-top: 5em;
+  background-color: rgba(255, 255, 255, 0.87);
+  margin: 1em;
+  border-radius: 2em;
+}
+
+.img19 {
+  grid-area: img19;
+  padding: 2em;
+  padding-top: 5em;
+  background-color: rgba(255, 255, 255, 0.87);
+  margin: 1em;
+  border-radius: 2em;
+}
