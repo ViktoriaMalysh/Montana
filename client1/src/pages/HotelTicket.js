@@ -196,84 +196,100 @@ function Tickets() {
   };
 
   return (
-    <div className="div-tickets">
-      <div className="div-tickets-cards">
-        <Form onSubmit={handleSubmit}>
-          <div className="div-tickets-title">
-            <Form.Select
-              onChange={(e) => setSearch(e.target.value)}
-              aria-label="Default select example"
-            >
-              <option>Chouse the country</option>
-              <option value="tr_TR">TURKEY</option>
-              <option value="it_IT">ITALY</option>
-              <option value="fr_FR">FRANCE</option>
-              <option value="el_GR">GREECE</option>
-              <option value="es_ES">SPAIN</option>
-              <option value="de_DE">GERMANY</option>
-              <option value="pl_PL">POLAND</option>
-              <option value="lv_LV">LATVIA</option>
-              <option value="en_IN">INDIA</option>
-              <option value="ja_JP">JAPAN</option>
-            </Form.Select>
-          </div>
-          <div className="tickcard">
-            <p className='p-ticket-country'>
-              Selected Country:{' '} 
-              <span className='span-ticket-country'>{country}</span>
-            </p>
-            <Row xs={1} md={2} className="g-4">
-              {store.tickets.showTickets.map((item, key) => (
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img
-                    variant="top"
-                    src={item.optimizedThumbUrls && item.optimizedThumbUrls.srpDesktop}
-                  />
-                  <Card.Body>
-                    <Card.Title>{item.name}</Card.Title>
-                    <Card.Text>
-                      Address:{" "}
-                      <span style={{ fontStyle: "italic" }}>
-                        {item.address && item.address.streetAddress}
-                      </span>
-                    </Card.Text>
-                    <Card.Text>
-                      Locality:{" "}
-                      <span style={{ fontStyle: "italic" }}>
-                        {item.address && item.address.locality}
-                      </span>
-                    </Card.Text>
-                    <Card.Text>
-                      Price:{" "}
-                      <span style={{ fontStyle: "italic" }}>
-                        {item.ratePlan &&
-                          item.ratePlan.price &&
-                          item.ratePlan.price.current}
-                      </span>
-                    </Card.Text>
-                    <Button
-                      variant="primary"
-                      onClick={() =>
-                        createTicket(
-                          item.name,
-                          item.address && item.address.streetAddress,
-                          item.address && item.address.locality,
-                          item.ratePlan &&
-                            item.ratePlan.price &&
-                            item.ratePlan.price.current
-                        )
+    <div className="div-tickets-block">
+      <div className="div-tickets">
+        <img
+          alt="Header"
+          className="img-ticket-header"
+          src="https://fs.tonkosti.ru/sized/c1600x400/0k/5p/0k5pzsquv480ggkckscogwcok.jpg"
+        />
+        <div className="div-tickets-cards">
+          <Form onSubmit={handleSubmit}>
+            <div className="div-tickets-title">
+              <Form.Select
+                onChange={(e) => setSearch(e.target.value)}
+                aria-label="Default select example"
+              >
+                <option>Chouse the country</option>
+                <option value="tr_TR">TURKEY</option>
+                <option value="it_IT">ITALY</option>
+                <option value="fr_FR">FRANCE</option>
+                <option value="el_GR">GREECE</option>
+                <option value="es_ES">SPAIN</option>
+                <option value="de_DE">GERMANY</option>
+                <option value="pl_PL">POLAND</option>
+                <option value="lv_LV">LATVIA</option>
+                <option value="en_IN">INDIA</option>
+                <option value="ja_JP">JAPAN</option>
+              </Form.Select>
+            </div>
+            <div className="tickcard">
+            
+              {search!=="" ? (
+                <>
+  <p className="p-ticket-country">
+                Selected Country:{" "}
+                <span className="span-ticket-country">{country}</span>
+              </p>
+            
+              <Row xs={1} md={2} className="g-4">
+                {store.tickets.showTickets.map((item, key) => (
+                  <Card className="card-tickets">
+                    <Card.Img
+                      variant="top"
+                      src={
+                        item.optimizedThumbUrls &&
+                        item.optimizedThumbUrls.srpDesktop
                       }
-                    >
-                      Book Now
-                    </Button>
-                  </Card.Body>
-                </Card>
-              ))}
-            </Row>
-          </div>
+                    />
+                    <Card.Body>
+                      <Card.Title>{item.name}</Card.Title>
+                      <Card.Text>
+                        Address:{" "}
+                        <span style={{ fontStyle: "italic" }}>
+                          {item.address && item.address.streetAddress}
+                        </span>
+                      </Card.Text>
+                      <Card.Text>
+                        Locality:{" "}
+                        <span style={{ fontStyle: "italic" }}>
+                          {item.address && item.address.locality}
+                        </span>
+                      </Card.Text>
+                      <Card.Text>
+                        Price:{" "}
+                        <span style={{ fontStyle: "italic" }}>
+                          {item.ratePlan &&
+                            item.ratePlan.price &&
+                            item.ratePlan.price.current}
+                        </span>
+                      </Card.Text>
+                      <Button
+                        variant="primary"
+                        onClick={() =>
+                          createTicket(
+                            item.name,
+                            item.address && item.address.streetAddress,
+                            item.address && item.address.locality,
+                            item.ratePlan &&
+                              item.ratePlan.price &&
+                              item.ratePlan.price.current
+                          )
+                        }
+                      >
+                        Book Now
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                
+                ))}
+              </Row>  </>
+                ):(<div></div>)}
+            </div>
 
-          <br></br>
-        </Form>
+            <br></br>
+          </Form>
+        </div>
       </div>
     </div>
   );

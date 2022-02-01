@@ -1,10 +1,28 @@
-.div-tickets{
+.div-tickets-block{
+
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: 
-  ". . . titleTickets titleTickets . . ."
-  ". ticketCard ticketCard ticketCard ticketCard ticketCard ticketCard ."
+  ". block1 block1 block1 block1 block1 block1 ."
   ;
+}
+
+.div-tickets{
+
+  background-color: rgba(236, 255, 253, 0.815);
+  grid-area: block1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+  "headerTicket headerTicket headerTicket headerTicket headerTicket headerTicket "
+  ". . titleTickets titleTickets . . "
+  "ticketCard ticketCard ticketCard ticketCard ticketCard ticketCard "
+  ;
+}
+
+.img-ticket-header{
+  grid-area: headerTicket;
+  width: 1500px;
 }
 
 .div-tickets-title{
@@ -20,17 +38,16 @@
 .div-tickets-cards{
   margin-left: 3em;
   grid-area: ticketCard;
-  
-  /* background-color: aqua; */
+  min-height: 32em;
 }
 
 .tickcard{
-
   padding-left: 3.5em;
 }
 
 .p-ticket-country{
   padding-top: 1.5em;
+  margin-left: 0.4em;
   padding-bottom: 1.5em;
   font-size: 1.5em;
   font-weight: 300;
@@ -39,4 +56,9 @@
 
 .span-ticket-country{
   font-style: italic;
+}
+
+.card-tickets{
+  width: 18rem; 
+  margin: 1.4em;
 }

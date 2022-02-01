@@ -1,0 +1,106 @@
+.div-page-profile{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+  ". blockProfile blockProfile blockProfile blockProfile blockProfile blockProfile ."
+  ;
+}
+
+.div-profile{
+  grid-area: blockProfile;
+  background-color: rgba(236, 255, 253, 0.815);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+  " headerProfile headerProfile headerProfile headerProfile headerProfile headerProfile "
+  " . profileAvatar profileMyself profileMyself profileSettings . "
+  " . . profileMore profileMore . . "
+  " . tickets tickets tickets tickets . "
+  ;
+}
+
+.img-header{
+  grid-area: headerProfile;
+  width: 1500px;
+}
+
+.img-avatar{
+  grid-area: profileAvatar;
+  margin-top: -6em;
+  height: 20em;
+  width: 20em;
+  border-radius: 50em;
+  /* background-color: aqua; */
+}
+
+.div-myself{
+  padding-left: 5em;
+  grid-area: profileMyself;
+  padding-top: 2em;
+  /* background-color: aquamarine; */
+}
+
+.p-profile-name{
+  font-size: 2.5em;
+  font-weight: 300;
+  font-family: 'Raleway',;
+}
+
+.div-profile-myself{
+  grid-area: profileMore;
+  /* padding-left: 5em; */
+}
+
+.div-profile-tickets{
+  padding-top: 5em;
+  padding-left: 1em;
+  /* background-color: blueviolet; */
+  grid-area: tickets;
+}
+
+.p-profile-country{
+  font-size: 1.4em;
+  font-weight: 300;
+  font-family: 'Raleway',;
+}
+
+.button-settings{
+  grid-area: profileSettings;
+  margin-top: 3em;
+  height: 3em;
+  width: 10em;
+  background-color: white;
+  border-color: rgb(0, 140, 255);
+  color:rgb(0, 140, 255);
+}
+
+.button-settings:hover{
+  grid-area: profileSettings;
+  margin-top: 3em;
+  height: 3em;
+  width: 10em;
+  color: white;
+  background-color: rgb(0, 140, 255);
+  border-color: rgb(0, 140, 255);
+}
+
+.button-more{
+  /* margin-left: -0.9em; */
+}
+
+.p-profile-myself{
+  font-size: 1.1em;
+  font-weight: 300;
+  font-family: 'Raleway',;
+}
+
+.p-profile-ticket{
+  font-size: 1.5em;
+  font-weight: 300;
+  font-family: 'Raleway',;
+  padding-bottom: 1em;
+}
+
+.card-ticket{
+  margin-bottom: 5em;
+}

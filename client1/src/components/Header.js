@@ -7,7 +7,6 @@ import { REQUESTED_SUCCEEDED_CLOSE_USER } from "../redux/types";
 import { fetchVerifyToken } from "../redux/actionUsers";
 
 function Header() {
-
   const store = useSelector((state) => state);
   const dispatch = useDispatch();
   const [admin, setAdmin] = useState(false);
@@ -24,7 +23,11 @@ function Header() {
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand>MONTANA</Navbar.Brand>
+          <Navbar.Brand>
+            <Link style={{ textDecoration: "none", color: "white" }} to={"/"}>
+              MONTANA
+            </Link>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -114,54 +117,43 @@ function Header() {
                   Tickets
                 </Link>
               </Nav.Link>
-
-              
             </Nav>
             <Nav>
               {store.users.isAuth ? (
                 <NavDropdown
-                title="UserName"
-                id="collasible-nav-dropdown"
-                style={{ color: "white" }}
-              >
-                <NavDropdown.Item>
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    to={"/"}
-                  >
-                    Profile
-                  </Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    to={"/"}
-                  >
-                    My Tickets
-                  </Link>
-                </NavDropdown.Item>
+                  title="UserName"
+                  id="collasible-nav-dropdown"
+                  style={{ color: "white" }}
+                >
+                  <NavDropdown.Item>
+                    <Link
+                      style={{ textDecoration: "none", color: "black" }}
+                      to={"/profile"}
+                    >
+                      Profile
+                    </Link>
+                  </NavDropdown.Item>
 
-                <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    to={"/logout"}
-                  >
-                    Log Out
-                  </Link>
-                </NavDropdown.Item>
-              </NavDropdown>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item>
+                    <Link
+                      style={{ textDecoration: "none", color: "black" }}
+                      to={"/logout"}
+                    >
+                      Log Out
+                    </Link>
+                  </NavDropdown.Item>
+                </NavDropdown>
               ) : (
                 <Nav.Link>
-                <Link
-                  style={{ textDecoration: "none", color: "white" }}
-                  to={"/login"}
-                >
-                  Sing In
-                </Link>
-              </Nav.Link>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={"/login"}
+                  >
+                    Sing In
+                  </Link>
+                </Nav.Link>
               )}
-              
             </Nav>
           </Navbar.Collapse>
         </Container>

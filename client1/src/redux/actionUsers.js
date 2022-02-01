@@ -11,6 +11,7 @@ import {
   SHOW_ALERT,
   USER_AGE,
   USER_COUNTRY,
+  USER_DATE_OF_BIRTH,
   USER_EMAIL,
   USER_GENDER,
   USER_ID,
@@ -64,7 +65,7 @@ export const fetchVerifyToken = (token) => {
         dispatch({ type: USER_EMAIL, payload: res.data.email });
         dispatch({ type: USER_ROLE, payload: res.data.role });
         dispatch({ type: USER_GENDER, payload: res.data.gender });
-        dispatch({ type: USER_AGE, payload: res.data.age });
+        dispatch({ type: USER_DATE_OF_BIRTH, payload: res.data.dataOfBirth });
         dispatch({ type: USER_PHONE, payload: res.data.phone });
         dispatch({ type: USER_COUNTRY, payload: res.data.country });
       })
@@ -119,7 +120,7 @@ export const fetchLogin = (user) => {
         dispatch({ type: USER_EMAIL, payload: res.data.email });
         dispatch({ type: USER_ROLE, payload: res.data.role });
         dispatch({ type: USER_GENDER, payload: res.data.gender });
-        dispatch({ type: USER_AGE, payload: res.data.age });
+        dispatch({ type: USER_DATE_OF_BIRTH, payload: res.data.dataOfBirth });
         dispatch({ type: USER_PHONE, payload: res.data.phone });
         dispatch({ type: USER_COUNTRY, payload: res.data.country });
 
