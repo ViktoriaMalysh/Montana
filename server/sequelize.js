@@ -28,6 +28,7 @@ const HotelTicket = sequelize.define("hotelTickets", {
   address: DataTypes.TEXT,
   locality: DataTypes.TEXT,
   price: DataTypes.INTEGER,
+  url: DataTypes.TEXT,
 });
 
 const SaleHotelTicket = sequelize.define("saleTickets", {

@@ -13,6 +13,7 @@ module.exports.booking1 = async function (req, res) {
       address: req.body.address,
       locality: req.body.locality,
       price: req.body.price,
+      url: req.body.url,
     };
     console.log("ticket", tickets);
     let ticket = HotelTicket.build({
@@ -21,6 +22,7 @@ module.exports.booking1 = async function (req, res) {
       address: tickets.address,
       locality: tickets.locality,
       price: tickets.price,
+      url: tickets.url,
     });
     await ticket.save();
     res.status(200).json({ name: ticket.name });

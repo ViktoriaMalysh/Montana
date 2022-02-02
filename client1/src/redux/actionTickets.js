@@ -40,7 +40,7 @@ export const alert = (message) => {
   };
 };
 
-export const addTicket = (id, name, address, loc, price) => {
+export const addTicket = (id, name, address, locality, price, url) => {
   console.log(id,name )
   const message = 'Success'
   return (dispatch) => {
@@ -50,8 +50,9 @@ export const addTicket = (id, name, address, loc, price) => {
       id_user: id,
       name: name,
       address: address,
-      locality: loc,
+      locality: locality,
       price: price,
+      url: url
     })
     .then(
       (data) => dispatch(requestSuccessTickets()),

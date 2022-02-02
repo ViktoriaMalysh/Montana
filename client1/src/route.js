@@ -14,6 +14,7 @@ import Logout from "./pages/Login";
 import Auth from "./pages/Auth";
 import Tickets from "./pages/HotelTicket";
 import Profile from "./pages/Profile";
+import BookTicket from "./pages/BookTicket";
 
 // import HotelTicket from "./pages/tickets/HotelTicket";
 // import AviaTicket from "./pages/tickets/AviaTicket";
@@ -60,7 +61,7 @@ export default function AppNav() {
 
         <Route path="/tickets" element={<Tickets />} />
         <Route path="/profile" element={<Profile />} />
-
+        <Route path="/bookTicket" element={<BookTicket />} />
         
         <Route path="/" element={<HomePage />} />
         

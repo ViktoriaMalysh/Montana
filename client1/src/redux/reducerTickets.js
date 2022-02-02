@@ -1,4 +1,28 @@
-import { SHOW_ALERT, HIDE_ALERT, FIND, SHOW_LOADER, HIDE_LOADER, REQUESTED_SUCCEEDED_TICKET, REQUESTED_SUCCEEDED_CLOSE_TICKET, REQUESTED_FAILED_TICKET, REQUESTED_TICKET, NAME_COUNTRY, START_DATE, END_DATE, PRICE_MIN, PRICE_MAX, SHOW_TICKETS, RESERVED, SHOW_MY_TICKETS, COUNTRY } from "./types";
+import {
+  SHOW_ALERT,
+  HIDE_ALERT,
+  FIND,
+  PHOTO_URL,
+  SHOW_LOADER,
+  HIDE_LOADER,
+  REQUESTED_SUCCEEDED_TICKET,
+  REQUESTED_SUCCEEDED_CLOSE_TICKET,
+  REQUESTED_FAILED_TICKET,
+  REQUESTED_TICKET,
+  NAME_COUNTRY,
+  START_DATE,
+  TICKET_NAME,
+  END_DATE,
+  PRICE_MIN,
+  PRICE_MAX,
+  SHOW_TICKETS,
+  RESERVED,
+  SHOW_MY_TICKETS,
+  COUNTRY,
+  ADDRESS,
+  LOCALITY,
+  PRICE,
+} from "./types";
 
 const initialState = {
   nameCountry: "",
@@ -8,7 +32,12 @@ const initialState = {
   country: "",
   err: false,
   find: false,
-  reserved: "processed"
+  reserved: "processed",
+  ticketName: "",
+  address: "",
+  locality: "",
+  price: "",
+  url: "",
 };
 
 export const reducerTickets = (state = initialState, action) => {
@@ -16,15 +45,25 @@ export const reducerTickets = (state = initialState, action) => {
     case NAME_COUNTRY:
       return { ...state, nameCountry: action.payload };
     case SHOW_TICKETS:
-      return { ...state, showTickets: action.payload  };
+      return { ...state, showTickets: action.payload };
     case SHOW_MY_TICKETS:
-      return { ...state, showMyTickets: action.payload  };
+      return { ...state, showMyTickets: action.payload };
     case RESERVED:
-      return { ...state, reserved: action.payload  };
+      return { ...state, reserved: action.payload };
     case FIND:
-      return { ...state, find: action.payload  };
+      return { ...state, find: action.payload };
     case COUNTRY:
-      return { ...state, country: action.payload  };
+      return { ...state, country: action.payload };
+    case TICKET_NAME:
+      return { ...state, ticketName: action.payload };
+    case ADDRESS:
+      return { ...state, address: action.payload };
+    case LOCALITY:
+      return { ...state, locality: action.payload };
+    case PRICE:
+      return { ...state, price: action.payload };
+    case PHOTO_URL:
+      return { ...state, url: action.payload };
     case REQUESTED_TICKET:
       return { ...state, success: true };
     case REQUESTED_SUCCEEDED_TICKET:

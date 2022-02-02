@@ -1,41 +1,32 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Spinner, Form, Card, Row, CardGroup } from "react-bootstrap";
+import { Spinner, Form, Card, Button, Modal, Row } from "react-bootstrap";
 import { useSelector, useDispatch, connect } from "react-redux";
 import {
+  ADDRESS,
   COUNTRY,
+  LOCALITY,
+  PHOTO_URL,
+  PRICE,
   REQUESTED_SUCCEEDED_CLOSE_TICKET,
   RESERVED,
-  SHOW_TICKETS,
+  TICKET_NAME,
 } from "../redux/types";
 import { addTicket, showTickets } from "../redux/actionTickets";
-// import { Alert } from "../components/Alert";
 import "./tickets.css";
 import { useNavigate } from "react-router";
 
 function Tickets() {
   const [search, setSearch] = useState("");
-
   const [country, setCountry] = useState("");
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [loc, setLoc] = useState("");
-  const [price, setPrice] = useState("");
-  // const [name, set] = useState("");
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const store = useSelector((state) => state);
   const loading = useSelector((state) => state.app.loading);
+  const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    if (store.tickets.reserved === "reserved") {
-      setTimeout(() => {
-        // navigate("/ticket");
-
-        dispatch({ type: RESERVED, payload: "processed" });
-      }, 400);
-    }
-  }, [store.tickets.reserved]);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     if (country !== "") {
@@ -44,8 +35,13 @@ function Tickets() {
   }, [country]);
 
   useEffect(() => {
+    if (store.tickets.ticketName !== "") {
+      // navigate("/bookTicket");
+    }
+  }, [store.tickets.ticketName]);
+
+  useEffect(() => {
     if (search !== "") {
-      // dispatch({ type: SHOW_TICKETS, payload: [{}] });
       const options = {
         method: "GET",
         url: "https://hotels4.p.rapidapi.com/properties/list",
@@ -115,81 +111,14 @@ function Tickets() {
     );
   }
 
-  const createTicket = (name1, address1, locality1, price1) => {
-    console.log("CreateTicket", name1, address1, locality1, price1);
-    setName(name1);
-    setAddress(address1);
-    setLoc(locality1);
-    setPrice(price1);
+  const createTicket = (name, address, locality, price, url) => {
+    dispatch({ type: TICKET_NAME, payload: name });
+    dispatch({ type: ADDRESS, payload: address });
+    dispatch({ type: LOCALITY, payload: locality });
+    dispatch({ type: PRICE, payload: price });
+    dispatch({ type: PHOTO_URL, payload: url });
+    setShow(true);
   };
-
-  if (name !== "") {
-    return (
-      <div className="firstform1">
-        {/* {store.tickets.text && <Alert text={store.tickets.text} />} */}
-        <div className="form111f">
-          <Form>
-            <Card
-              bg="header"
-              style={{
-                width: "35em",
-                marginLeft: "auto",
-                marginRight: "auto",
-                color: "black",
-              }}
-              className="mb-2"
-            >
-              <Card.Header>
-                STATUS:{" "}
-                <span style={{ fontStyle: "italic" }}>
-                  {store.tickets.reserved}
-                </span>
-              </Card.Header>
-              <Card.Body>
-                <Card.Text>
-                  Hotel: <span style={{ fontStyle: "italic" }}>{name}</span>
-                </Card.Text>
-                <Card.Text>
-                  Address:{" "}
-                  <span style={{ fontStyle: "italic" }}>{address}</span>
-                </Card.Text>
-                <Card.Text>
-                  Locality: <span style={{ fontStyle: "italic" }}>{loc}</span>
-                </Card.Text>
-
-                <Card.Text>
-                  Price: <span style={{ fontStyle: "italic" }}>{price}</span>
-                </Card.Text>
-              </Card.Body>
-
-              <p className="textmmessage">
-                If all the data is correct, then confirm the reservation:
-              </p>
-              <Button
-                style={{ width: "12em", margin: "auto", marginBottom: "2em" }}
-                variant="success"
-                onClick={() =>
-                  dispatch(
-                    addTicket(
-                      store.users.userId,
-                      name,
-                      address,
-                      loc,
-                      price.slice(1)
-                    )
-                  )
-                }
-              >
-                Confirm the reservation
-              </Button>
-            </Card>
-
-            <br></br>
-          </Form>
-        </div>
-      </div>
-    );
-  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -198,6 +127,44 @@ function Tickets() {
   return (
     <div className="div-tickets-block">
       <div className="div-tickets">
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>{store.tickets.ticketName}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <img alt="Header" className="img-hotel" src={store.tickets.url} />
+            <p className="p-book-hotel">
+              Address:{" "}
+              <span style={{ fontStyle: "italic" }}>
+                {store.tickets.address}
+              </span>
+            </p>
+            <p className="p-book-hotel">
+              Locality:{" "}
+              <span style={{ fontStyle: "italic" }}>
+                {store.tickets.locality}
+              </span>
+            </p>
+            <p className="p-book-hotel">
+              Price:{" "}
+              <span style={{ fontStyle: "italic" }}>{store.tickets.price}</span>
+            </p>
+            <p className="text-message">
+                If all the data is correct, then confirm the reservation:
+              </p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary">Book</Button>
+          </Modal.Footer>
+        </Modal>
         <img
           alt="Header"
           className="img-ticket-header"
@@ -224,67 +191,73 @@ function Tickets() {
               </Form.Select>
             </div>
             <div className="tickcard">
-            
-              {search!=="" ? (
+              {search !== "" ? (
                 <>
-  <p className="p-ticket-country">
-                Selected Country:{" "}
-                <span className="span-ticket-country">{country}</span>
-              </p>
-            
-              <Row xs={1} md={2} className="g-4">
-                {store.tickets.showTickets.map((item, key) => (
-                  <Card className="card-tickets">
-                    <Card.Img
-                      variant="top"
-                      src={
-                        item.optimizedThumbUrls &&
-                        item.optimizedThumbUrls.srpDesktop
-                      }
-                    />
-                    <Card.Body>
-                      <Card.Title>{item.name}</Card.Title>
-                      <Card.Text>
-                        Address:{" "}
-                        <span style={{ fontStyle: "italic" }}>
-                          {item.address && item.address.streetAddress}
-                        </span>
-                      </Card.Text>
-                      <Card.Text>
-                        Locality:{" "}
-                        <span style={{ fontStyle: "italic" }}>
-                          {item.address && item.address.locality}
-                        </span>
-                      </Card.Text>
-                      <Card.Text>
-                        Price:{" "}
-                        <span style={{ fontStyle: "italic" }}>
-                          {item.ratePlan &&
-                            item.ratePlan.price &&
-                            item.ratePlan.price.current}
-                        </span>
-                      </Card.Text>
-                      <Button
-                        variant="primary"
-                        onClick={() =>
-                          createTicket(
-                            item.name,
-                            item.address && item.address.streetAddress,
-                            item.address && item.address.locality,
-                            item.ratePlan &&
-                              item.ratePlan.price &&
-                              item.ratePlan.price.current
-                          )
-                        }
-                      >
-                        Book Now
-                      </Button>
-                    </Card.Body>
-                  </Card>
-                
-                ))}
-              </Row>  </>
-                ):(<div></div>)}
+                  <p className="p-ticket-country">
+                    Selected Country:{" "}
+                    <span className="span-ticket-country">{country}</span>
+                  </p>
+                  <Row xs={1} md={2} className="g-4">
+                    {store.tickets.showTickets.map((item, key) => (
+                      <Card className="card-tickets">
+                        <Card.Img
+                          className="img-url"
+                          variant="top"
+                          src={
+                            item.optimizedThumbUrls &&
+                            item.optimizedThumbUrls.srpDesktop
+                          }
+                        />
+                        <Card.Body>
+                          <Card.Title className="card-title">
+                            {item.name}
+                          </Card.Title>
+                          <Card.Text className="card-text">
+                            Address:{" "}
+                            <span style={{ fontStyle: "italic" }}>
+                              {item.address && item.address.streetAddress}
+                            </span>
+                          </Card.Text>
+                          <Card.Text>
+                            Locality:{" "}
+                            <span style={{ fontStyle: "italic" }}>
+                              {item.address && item.address.locality}
+                            </span>
+                          </Card.Text>
+                          <Card.Text>
+                            Price:{" "}
+                            <span style={{ fontStyle: "italic" }}>
+                              {item.ratePlan &&
+                                item.ratePlan.price &&
+                                item.ratePlan.price.current}
+                            </span>
+                          </Card.Text>
+                          <button
+                            className="button-book-now"
+                            variant="primary"
+                            onClick={() =>
+                              createTicket(
+                                item.name,
+                                item.address && item.address.streetAddress,
+                                item.address && item.address.locality,
+                                item.ratePlan &&
+                                  item.ratePlan.price &&
+                                  item.ratePlan.price.current,
+                                item.optimizedThumbUrls &&
+                                  item.optimizedThumbUrls.srpDesktop
+                              )
+                            }
+                          >
+                            Book Now
+                          </button>
+                        </Card.Body>
+                      </Card>
+                    ))}
+                  </Row>{" "}
+                </>
+              ) : (
+                <div></div>
+              )}
             </div>
 
             <br></br>
