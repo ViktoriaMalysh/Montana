@@ -74,48 +74,31 @@ function ProfileSettings() {
             name="surname"
             defaultValue={store.users.userSurname}
           ></input>
+          
           <input
             type="text"
             name="country"
             defaultValue={store.users.userCountry}
           ></input>
-          <p className="p-profile-country">{store.users.userCountry}</p>
 
-          <p className="p-profile-myself">{store.users.userEmail}</p>
+          <input
+            type="text"
+            name="country"
+            defaultValue={store.users.userGender}
+          ></input>
 
-          {more ? (
-            <div className="div-profile-myself">
-              <p className="p-profile-myself">
-                Gender:{" "}
-                <span className="span-myself" style={{ fontStyle: "italic" }}>
-                  {store.users.userGender}
-                </span>
-              </p>
+          <input
+            type="text"
+            name="country"
+            defaultValue={store.users.dateOfBirth}
+          ></input>
 
-              <p className="p-profile-myself">
-                Date Of Birth:{" "}
-                <span className="span-myself" style={{ fontStyle: "italic" }}>
-                  {store.users.dateOfBirth}
-                </span>
-              </p>
+          <input
+            type="text"
+            name="country"
+            defaultValue={store.users.userPhone}
+          ></input>
 
-              <p className="p-profile-myself">
-                Age:{" "}
-                <span className="span-myself" style={{ fontStyle: "italic" }}>
-                  {store.users.userAge} year
-                </span>
-              </p>
-
-              <p className="p-profile-myself">
-                Phone:{" "}
-                <span className="span-myself" style={{ fontStyle: "italic" }}>
-                  +380{store.users.userPhone}
-                </span>
-              </p>
-            </div>
-          ) : (
-            <div></div>
-          )}
 
           <Button
             variant="link"
