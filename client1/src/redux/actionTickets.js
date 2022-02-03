@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  DELETE,
   FIND,
   HIDE_LOADER,
   REQUESTED_FAILED_TICKET,
@@ -99,7 +100,10 @@ export const showMyTickets = (id) => {
       })
       .then((res) => {
         if(res.data.length===0) dispatch({ type: FIND, payload: true })   
-        else dispatch({ type: SHOW_MY_TICKETS, payload: res.data })
+        else {
+          dispatch({ type: SHOW_MY_TICKETS, payload: res.data })
+          console.log('res', res.data)
+        }
       })
       .then(
         (data) => dispatch(requestSuccessTickets()),
@@ -120,7 +124,9 @@ export const deleteTickets = (id) => {
       .post(`http://localhost:8000/tickets/cancelBooking`, {
         id: id,
       })
-      .then((res) => res.data.delete)
+      .then((res) => {
+        dispatch({ type: DELETE, payload: res.data.delete })
+      })
       .then(
         (data) => dispatch(requestSuccessTickets()),
         dispatch({ type: REQUESTED_SUCCEEDED_CLOSE_TICKET }),

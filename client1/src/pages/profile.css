@@ -16,6 +16,8 @@
   " . profileAvatar profileMyself profileMyself profileSettings . "
   " . . profileMore profileMore . . "
   " . tickets tickets tickets tickets . "
+  " . deleteAccount . . . . "
+
   ;
 }
 
@@ -103,4 +105,53 @@
 
 .card-ticket{
   margin-bottom: 5em;
+}
+
+.card-ticket-profile{
+  width: 18rem; 
+  margin: 1.4em;
+}
+
+.button-cancel-book{
+  margin-top: 1em;
+  margin-left: 2em;
+  height: 3em;
+  width: 10em;
+  background-color: white;
+  border-color: rgb(255, 51, 0);
+  color:rgb(255, 0, 0);
+}
+
+.button-cancel-book:hover{
+  margin-top: 1em;
+  margin-left: 2em;
+  height: 3em;
+  width: 10em;
+  color: white;
+  background-color: rgb(255, 51, 0);
+  border-color: rgb(255, 51, 0);
+}
+
+.div-button-delete{
+  grid-area: deleteAccount;
+  margin-top: 1em;
+  margin-left: 2em;
+}
+
+.button-delete{
+  margin-top: 1em;
+  margin-bottom: 5em;
+  height: 3em;
+  width: 10em;
+  background-color: white;
+  border-color: rgb(255, 51, 0);
+  color:rgb(255, 0, 0);
+}
+
+.button-delete:hover{
+  height: 3em;
+  width: 10em;
+  color: white;
+  background-color: rgb(255, 51, 0);
+  border-color: rgb(255, 51, 0);
 }

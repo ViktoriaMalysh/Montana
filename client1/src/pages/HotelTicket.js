@@ -111,6 +111,21 @@ function Tickets() {
     );
   }
 
+  const handleBook = () => {
+    dispatch(
+      addTicket(
+        store.users.userId,
+        store.tickets.ticketName,
+        store.tickets.address,
+        store.tickets.locality,
+        store.tickets.price.slice(1),
+        store.tickets.url
+      )
+    )
+    setShow(false);
+
+  }
+
   const createTicket = (name, address, locality, price, url) => {
     dispatch({ type: TICKET_NAME, payload: name });
     dispatch({ type: ADDRESS, payload: address });
@@ -134,35 +149,44 @@ function Tickets() {
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>{store.tickets.ticketName}</Modal.Title>
+            <Modal.Title className="modal-title">
+              {store.tickets.ticketName}
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <img alt="Header" className="img-hotel" src={store.tickets.url} />
-            <p className="p-book-hotel">
-              Address:{" "}
-              <span style={{ fontStyle: "italic" }}>
-                {store.tickets.address}
-              </span>
-            </p>
-            <p className="p-book-hotel">
-              Locality:{" "}
-              <span style={{ fontStyle: "italic" }}>
-                {store.tickets.locality}
-              </span>
-            </p>
-            <p className="p-book-hotel">
-              Price:{" "}
-              <span style={{ fontStyle: "italic" }}>{store.tickets.price}</span>
-            </p>
-            <p className="text-message">
+            <div className="div-body">
+              <p className="p-book-hotel">
+                Address:{" "}
+                <span style={{ fontStyle: "italic" }}>
+                  {store.tickets.address}
+                </span>
+              </p>
+              <p className="p-book-hotel">
+                Locality:{" "}
+                <span style={{ fontStyle: "italic" }}>
+                  {store.tickets.locality}
+                </span>
+              </p>
+              <p className="p-book-hotel">
+                Price:{" "}
+                <span style={{ fontStyle: "italic" }}>
+                  {store.tickets.price}
+                </span>
+              </p>
+              <p className="text-message">
                 If all the data is correct, then confirm the reservation:
               </p>
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
-              Close
+              Cancel
             </Button>
-            <Button variant="primary">Book</Button>
+            <Button 
+              variant="primary"
+              onClick={handleBook}
+            >Confirm</Button>
           </Modal.Footer>
         </Modal>
         <img

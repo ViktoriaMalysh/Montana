@@ -3,15 +3,15 @@ import "./country.css";
 
 const Post = () => {
   return (
-    <div className="block1">
-      <div className="form181">
-        <h1 className="titleTurkey">Turkey</h1>
+    <div className="div-country">
+      <div className="div-form-country">
+        <h1 className="h1-title-country">Turkey</h1>
         <img
-          className="imgTurkey"
+          className="img-country"
           src="https://aaatravel.ru/wp-content/uploads/2019/09/turciya_morya_banner2.jpg"
         />
 
-        <p className="text-secondary col-xl-7 col-lg-7 textTurkey1">
+        <p className="textTurkey1">
           Istanbul is the largest city in Turkey, constituting the country's
           economic, cultural and historical heart. With a population of 14.1
           million, the city forms the largest urban agglomeration in Europe.
@@ -22,19 +22,19 @@ const Post = () => {
         </p>
         <br />
         <img
-          className="col-xl-3 col-lg-3"
+          className=""
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/250px-Flag_of_Turkey.svg.png"
         />
 
-        <div className="container">
-          <div className="row">
+        <div className="div-container">
+          <div className="">
             <br />
 
             <img
-              className="col-xl-7 col-lg-7"
+              className=""
               src="https://smartstaff.com.ua/wp-content/uploads/2021/01/image.jpg"
             />
-            <p className="col-xl-5 col-lg-5 text-secondary textTurkey">
+            <p className="textTurkey">
               With its long history at the center of empires, Istanbul offers a
               wealth of historic and religious places to take in. The bulk of
               these ancient monuments, dating back to Roman, Byzantine, and
@@ -48,11 +48,11 @@ const Post = () => {
           </div>
         </div>
 
-        <div className="container">
-          <div className="row">
+        <div className="div-container">
+          <div className="">
             <p
               // className="textTurkey"
-              className="col-xl-7 col-lg-7 text-secondary textTurkey"
+              className="p-text-country"
             >
               An impressive section of mostly intact Theodosian walls, which
               mark the full length of the western boundary of the peninsula, is
@@ -68,7 +68,7 @@ const Post = () => {
             </p>
             <img
               // className="imgTurkey1"
-              className="col-xl-5 col-lg-5 "
+              className=" "
               src="https://smartstaff.com.ua/wp-content/uploads/2021/01/image.jpg"
             />
             <br />

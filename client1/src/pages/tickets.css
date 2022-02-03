@@ -1,5 +1,4 @@
 .div-tickets-block{
-
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: 
@@ -8,7 +7,6 @@
 }
 
 .div-tickets{
-
   background-color: rgba(236, 255, 253, 0.815);
   grid-area: block1;
   display: grid;
@@ -90,10 +88,31 @@
   padding-bottom: 1em;
 }
 
-.card-text{
-  /* padding-bottom: -0.5em; */
-}
-
 .img-hotel{
   width: 29em;
+}
+
+.modal-title{
+  padding-left: 1em;
+  font-weight: 400;
+  font-family: 'Raleway',;
+}
+
+.div-body{
+  padding-top: 2em;
+  padding-left: 2em;
+}
+
+.p-book-hotel{
+  font-size: 1.2em;
+  font-weight: 300;
+  font-family: 'Raleway',;
+}
+
+.text-message{
+  padding-top: 1em;
+  font-size: 1em;
+  font-weight: 300;
+  font-family: 'Raleway',;
+  font-style: italic; 
 }

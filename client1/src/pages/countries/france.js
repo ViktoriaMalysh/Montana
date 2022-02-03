@@ -3,34 +3,34 @@ import "./country.css";
 
 const Post = () => {
   return (
-    <div className="block1">
-      <div className="form181">
-        <h1 className="titleTurkey">France</h1>
+    <div className="div-country">
+      <div className="div-form-country">
+        <h1 className="h1-title-country">France</h1>
         <img
-          className="imgTurkey"
+          className="img-country"
           src="https://gosselin-moving.com/sites/gosselinmoving/files/styles/col_24/public/images/2020-08/France-01.jpg?itok=w6IffbkT"
         />
 
-        <p className="text-secondary col-xl-7 col-lg-7 textTurkey1">
+        <p className="p-text-country">
           France is a popular tourist destination, especially for those who are
           looking for a romantic location, a place to explore and meet new
           people, or even just to relax on a beach.
         </p>
         <br />
         <img
-          className="col-xl-3 col-lg-3"
+          className=""
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png"
         />
 
-        <div className="container">
-          <div className="row">
+        <div className="div-container">
+          <div className="">
             <br />
 
             <img
-              className="col-xl-7 col-lg-7"
+              className=""
               src="https://worldstrides.com/wp-content/uploads/2017/06/France_Mediterranean_Spain-min.jpg"
             />
-            <p className="col-xl-5 col-lg-5 text-secondary textTurkey">
+            <p className="textTurkey">
               There’s so much conversation around this beautiful country that
               sometimes tourists think they understand the French culture and
               the history behind the country without doing any research. This
@@ -41,9 +41,9 @@ const Post = () => {
           </div>
         </div>
 
-        <div className="container">
-          <div className="row">
-            <p className="col-xl-7 col-lg-7 text-secondary textTurkey">
+        <div className="div-container">
+          <div className="">
+            <p className="textTurkey">
               Besides having the best taste in fashion and beautiful
               architecture, there are things you must understand before meeting
               the French face to face. An example of this is that the French
@@ -54,7 +54,7 @@ const Post = () => {
               visiting the country of love.
             </p>
             <img
-              className="col-xl-5 col-lg-5 "
+              className=" "
               src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5eb02ff750b05f0008514b13%2FEiffel-Tower-France-digital-Covid-pass%2F1960x0.jpg%3Ffit%3Dscale"
             />
             <br />
