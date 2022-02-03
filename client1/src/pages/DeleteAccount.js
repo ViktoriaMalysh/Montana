@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector, connect } from "react-redux";
 import { REQUESTED_SUCCEEDED_CLOSE_USER } from "../redux/types";
 import { fetchDelete } from "../redux/actionUsers";
-import { Alert } from "../components/Alert";
+// import { Alert } from "../components/Alert";
 
 function DeleteAccount() {
-  let history = useHistory();
+  let navigate = useNavigate();
   const dispatch = useDispatch();
   const store = useSelector((state) => state);
 
@@ -16,7 +16,7 @@ function DeleteAccount() {
     if (store.users.success) {
       setTimeout(() => {
         dispatch({ type: REQUESTED_SUCCEEDED_CLOSE_USER });
-        history.push("/users/auth");
+        navigate("/auth");
       }, 1400);
     }
   }, [store.users.success]);
@@ -24,13 +24,14 @@ function DeleteAccount() {
   useEffect(() => {
     if (store.users.err) {
       setTimeout(() => {
-        history.push("/");
+        navigate("/");
         dispatch({ type: REQUESTED_SUCCEEDED_CLOSE_USER });
       }, 1400);
     }
   }, [store.users.err]);
 
-  return <div>{store.users.text && <Alert text={store.users.text} />}</div>;
+  return null;
+  // return <div>{store.users.text && <Alert text={store.users.text} />}</div>;
 }
 
 const mapDispatchToProps = {

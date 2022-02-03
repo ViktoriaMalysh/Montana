@@ -1,18 +1,18 @@
-.block1{
+.div-country{
   display: grid;
   background-size: 100% 1050px ;
   height: 54em;
   background-image: url(https://chili59.ru/images/sliders/sl5.jpg);
 }
 
-.form181{
+.div-form-country{
   grid-area: form11;
   font-size: 3em;
   line-height: 1.1em;
   text-align: center;
 }
 
-.container {
+.div-container {
   width: 100%;
   margin-top: 3em;
   font-size: 0.5em;
@@ -23,7 +23,7 @@
   text-align: left;
 }
 
-.imgTurkey{
+.img-country{
   margin-top: 1em;
   height: 650px;
   grid-area: form11;
@@ -33,7 +33,7 @@
   font-size: 1.2em;
 }
 
-.titleTurkey{
+.h1-title-country{
   margin-top: 1em;
   grid-area: form1;
   font-size: 2em;
@@ -43,7 +43,7 @@
   color: rgb(250, 250, 250);
 }
 
-.textTurkey{
+.p-text-country{
   text-align: start;
   font-size: 1.2em;
   line-height: 1.5em;

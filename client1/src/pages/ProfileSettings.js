@@ -7,7 +7,7 @@ import "./profile.css";
 import { deleteTickets, showMyTickets } from "../redux/actionTickets";
 import { DELETE } from "../redux/types";
 
-function Profile() {
+function ProfileSettings() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const store = useSelector((state) => state);
@@ -64,6 +64,21 @@ function Profile() {
             {"  "}
             {store.users.userSurname}
           </p>
+          <input
+            type="text"
+            name="name"
+            defaultValue={store.users.userName}
+          ></input>
+          <input
+            type="text"
+            name="surname"
+            defaultValue={store.users.userSurname}
+          ></input>
+          <input
+            type="text"
+            name="country"
+            defaultValue={store.users.userCountry}
+          ></input>
           <p className="p-profile-country">{store.users.userCountry}</p>
 
           <p className="p-profile-myself">{store.users.userEmail}</p>
@@ -110,63 +125,14 @@ function Profile() {
             {!more ? "More Information..." : "Less Information"}
           </Button>
         </div>
-        <button
+
+        {/* <button
           variant="warning"
           className="button-settings"
           // onClick={() => navigate("/users/checkPass")}
         >
           Profile Settings
-        </button>
-
-        <div className="div-profile-tickets">
-          <p className="p-profile-ticket">Booked Tickets: </p>
-          <Row xs={1} md={2} className="g-4 ">
-            {store.tickets.showMyTickets.map((item, key) => (
-              <Card className="card-ticket-profile" key={item.id}>
-                <Card.Img variant="top" src={item.url} />
-                <Card.Body>
-                  <Card.Title>{item.country}</Card.Title>
-                  <Card.Text>
-                    Address:{" "}
-                    <span style={{ fontStyle: "italic" }}>{item.address}</span>
-                  </Card.Text>
-                  <Card.Text>
-                    Locality:{" "}
-                    <span style={{ fontStyle: "italic" }}>{item.locality}</span>
-                  </Card.Text>
-                  <Card.Text>
-                    Price:{" "}
-                    <span style={{ fontStyle: "italic" }}>
-                      {"$" + item.price}
-                    </span>
-                  </Card.Text>
-                  <button
-                    className="button-cancel-book"
-                    onClick={() => cancelBook(item.id)}
-                  >
-                    Cancel Book
-                  </button>
-                </Card.Body>
-              </Card>
-            ))}
-          </Row>
-        </div>
-        <div className="div-button-delete">
-          <button
-            variant="warning"
-            className="button-settings"
-            onClick={() => navigate("/profileSettings")}
-          >
-            Profile Settings
-          </button>
-          <button
-            variant="warning"
-            className="button-delete"
-            onClick={() => navigate("/deleteAccount")}
-          >
-            Delete Account
-          </button>
-        </div>
+        </button> */}
       </div>
     </div>
   );
@@ -176,4 +142,4 @@ function mapStateToProps(state) {
   return { store: state };
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps)(ProfileSettings);

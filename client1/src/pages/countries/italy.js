@@ -3,15 +3,15 @@ import "./country.css";
 
 const Post = () => {
   return (
-    <div className="block1">
-      <div className="form181">
-        <h1 className="titleTurkey">Italy</h1>
+    <div className="div-country">
+      <div className="div-form-country">
+        <h1 className="h1-title-country">Italy</h1>
         <img
-          className="imgTurkey"
+          className="img-country"
           src="https://initalycom.files.wordpress.com/2019/12/italy-city-rome.jpg?w=1200"
         />
 
-        <p className="text-secondary col-xl-7 col-lg-7 textTurkey1">
+        <p className="textTurkey1">
         Italy, country of south-central Europe, occupying a peninsula that 
               juts deep into the Mediterranean Sea. Italy comprises some of the 
               most varied and scenic landscapes on Earth and is often described as 
@@ -20,19 +20,19 @@ const Post = () => {
         </p>
         <br />
         <img
-          className="col-xl-3 col-lg-3"
+          className=""
           src="https://flagshoppen.com/wp-content/uploads/2021/03/Italy-Flag.png"
         />
 
-        <div className="container">
-          <div className="row">
+        <div className="div-container">
+          <div className="">
             <br />
 
             <img
-              className="col-xl-7 col-lg-7"
+              className=""
               src="https://www.wantedinmilan.com/i/preview/storage/uploads/2020/06/italy-global-leader-tourism-travel.jpg"
             />
-            <p className="col-xl-5 col-lg-5 text-secondary textTurkey">
+            <p className="textTurkey">
             Italy’s highest points 
               are along Monte Rosa, which peaks in Switzerland, and along Mont Blanc,
               which peaks in France. The western Alps overlook a landscape of 
@@ -46,9 +46,9 @@ const Post = () => {
           </div>
         </div>
 
-        <div className="container">
-          <div className="row">
-            <p className="col-xl-7 col-lg-7 text-secondary textTurkey">
+        <div className="div-container">
+          <div className="">
+            <p className="p-text-country">
             South of Rome the Apennines narrow 
               and are flanked by two wide coastal plains, one facing the Tyrrhenian 
               Sea and the other the Adriatic Sea. Much of the lower Apennine chain is 
@@ -61,7 +61,7 @@ const Post = () => {
               Sardinia.
             </p>
             <img
-              className="col-xl-5 col-lg-5 "
+              className=" "
               src="https://www.wantedinrome.com/i/preview/storage/uploads/2021/08/EU-drops-US-from-covid-safe-travel-list-but-can-american-tourists-still-travel-to-italy.jpg"
             />
             <br />
