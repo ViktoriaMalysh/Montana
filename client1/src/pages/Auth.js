@@ -28,7 +28,7 @@ function Login() {
   const [surname, setSurname] = useState("");
   const [gender, setGender] = useState("");
   const [dataOfBirth, setDataOfBirth] = useState("");
-
+console.log("git")
 
   const [country, setCountry] = useState("");
 
