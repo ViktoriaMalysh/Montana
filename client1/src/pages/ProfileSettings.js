@@ -1,129 +1,131 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Card, Row, Spinner, Button } from "react-bootstrap";
+import { Card, Row, Spinner, Button, Form, Col } from "react-bootstrap";
 import { useSelector, connect, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "./profile.css";
+import "./profileSettings.css";
 import { deleteTickets, showMyTickets } from "../redux/actionTickets";
 import { DELETE } from "../redux/types";
+import { Modal } from "bootstrap";
+import { Link } from "react-router-dom";
 
 function ProfileSettings() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const store = useSelector((state) => state);
-  const loading = useSelector((state) => state.app.loading);
-  const [more, setMore] = useState(false);
+  const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    dispatch(showMyTickets(store.users.userId));
-  }, []);
-
-  useEffect(() => {
-    if (store.tickets.delete) {
-      dispatch(showMyTickets(store.users.userId));
-      setTimeout(() => {
-        dispatch({ type: DELETE, payload: false });
-      }, 600);
-    }
-  }, [store.tickets.delete]);
-
-  if (loading) {
-    return (
-      <div className="form1111">
-        <Spinner animation="border" variant="danger" role="status"></Spinner>
-      </div>
-    );
-  }
-
-  const cancelBook = (id) => {
-    dispatch(deleteTickets(id));
-  };
-
-  const handleMore = () => {
-    console.log(more);
-    if (!more) setMore(true);
-    else if (more) setMore(false);
+  const handleClose = () => setShow(false);
+  const handleChange = () => {
+    setShow(false);
   };
 
   return (
-    <div className="div-page-profile">
-      <div className="div-profile">
-        <img
-          alt="Header"
-          className="img-header"
-          src="https://fs.tonkosti.ru/sized/c1600x400/0k/5p/0k5pzsquv480ggkckscogwcok.jpg"
-        />
+    <div className="div-change-profile">
+      <button className='button7'>button1</button>
+      <button className='button8'>button2</button>
+      <div className="div-profile-settings">
+        <nav className="nav-change-profile">
+          <Link
+            className='nav-link-profile'
+            style={{ textDecoration: "none", color: "black" }}
+            to={"/country/italy"}
+          >
+            <div className='div-nav-link'>Profile</div>
+          </Link>
+        </nav>
         <img
           alt="Avatar"
-          className="img-avatar"
+          className="img-avatar-change"
           src="https://okeygeek.ru/wp-content/uploads/2020/03/no_avatar.png"
         />
-        <div className="div-myself">
-          <p className="p-profile-name">
-            {store.users.userName}
-            {"  "}
-            {store.users.userSurname}
+        <div className="div-change-myself">
+          <p className="p-change-myself">
+            Name:{" "}
+            <input
+              type="text"
+              name="name"
+              defaultValue={store.users.userName}
+            ></input>
           </p>
-          <input
-            type="text"
-            name="name"
-            defaultValue={store.users.userName}
-          ></input>
-          <input
-            type="text"
-            name="surname"
-            defaultValue={store.users.userSurname}
-          ></input>
-          <input
-            type="text"
-            name="country"
-            defaultValue={store.users.userCountry}
-          ></input>
-          <p className="p-profile-country">{store.users.userCountry}</p>
 
-          <p className="p-profile-myself">{store.users.userEmail}</p>
+          <p className="p-change-myself">
+            Surname:{" "}
+            <input
+              type="text"
+              name="surname"
+              defaultValue={store.users.userSurname}
+            ></input>
+          </p>
 
-          {more ? (
-            <div className="div-profile-myself">
-              <p className="p-profile-myself">
-                Gender:{" "}
-                <span className="span-myself" style={{ fontStyle: "italic" }}>
-                  {store.users.userGender}
-                </span>
-              </p>
+          <p className="p-change-myself">
+            Country:{" "}
+            <input
+              type="text"
+              name="email"
+              defaultValue={store.users.userCountry}
+            ></input>
+          </p>
 
-              <p className="p-profile-myself">
-                Date Of Birth:{" "}
-                <span className="span-myself" style={{ fontStyle: "italic" }}>
-                  {store.users.dateOfBirth}
-                </span>
-              </p>
+          <p className="p-change-myself">
+            Email:{" "}
+            <input
+              type="text"
+              name="email"
+              defaultValue={store.users.userEmail}
+            ></input>
+          </p>
 
-              <p className="p-profile-myself">
-                Age:{" "}
-                <span className="span-myself" style={{ fontStyle: "italic" }}>
-                  {store.users.userAge} year
-                </span>
-              </p>
+          <Row className="align-items-center">
+            <Col xs="auto" className="my-1">
+              <Form.Label>
+                <h4 className="p-change-myself">Date of Birth</h4>
+              </Form.Label>
+            </Col>
+            <Col xs="auto" className="my-1">
+              <input
+                type="date"
+                id="start"
+                name="trip-start"
+                defaultValue="2020-07-22"
+                min="1960-01-01"
+                max="2018-12-31"
+              ></input>{" "}
+            </Col>
+          </Row>
 
-              <p className="p-profile-myself">
-                Phone:{" "}
-                <span className="span-myself" style={{ fontStyle: "italic" }}>
-                  +380{store.users.userPhone}
-                </span>
-              </p>
-            </div>
-          ) : (
-            <div></div>
-          )}
+          <Row className="align-items-center">
+            <Col xs="auto" className="my-1">
+              <Form.Label>
+                <h4 className="p-change-myself">Choose Gender</h4>
+              </Form.Label>
+            </Col>
+            <Col xs="auto" className="my-1">
+              <Form.Select
+                className="me-sm-2"
+                id="inlineFormCustomSelect"
+                defaultValue={store.users.userGender}
+                // onChange={(e) => setGender(e.target.value)}
+              >
+                <option className="option-style" value="male">
+                  Mele
+                </option>
+                <option className="option-style" value="femele">
+                  Femele
+                </option>
+              </Form.Select>
+            </Col>
+          </Row>
 
-          <Button
-            variant="link"
-            className="button-more"
-            onClick={() => handleMore()}
-          >
-            {!more ? "More Information..." : "Less Information"}
-          </Button>
+          <p className="p-change-myself">
+            Phone:{" "}
+            <input
+              className="input-change-profile"
+              type="text"
+              name="phone"
+              defaultValue={store.users.userPhone}
+            ></input>
+          </p>
         </div>
 
         {/* <button

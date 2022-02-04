@@ -1,0 +1,68 @@
+.div-change-profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+    ". block7 . . . . block8 ."
+    ". profile profile profile profile profile profile ."
+  
+  ;
+}
+
+.button7{
+  margin-top: 2em;
+  grid-area: block7;
+
+}
+
+.button8{
+  margin-top: 2em;
+  grid-area: block8;
+
+}
+
+.div-profile-settings {
+  background-color: rgba(236, 255, 253, 0.815);
+  grid-area: profile;
+  min-height: 57em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "navBar avatarChange myselfChange myselfChange myselfChange ";
+}
+
+.nav-change-profile{
+  grid-area: navBar;
+}
+
+.img-avatar-change{
+  grid-area: avatarChange;
+  margin-top: 3em;
+  height: 20em;
+  width: 20em;
+  border-radius: 50em;
+  background-color: aqua;
+}
+
+.div-change-myself{
+  margin-left: 5em;
+  grid-area: myselfChange;
+  /* background-color: blueviolet; */
+
+}
+
+.p-change-myself{
+  font-size: 1.3em;
+  font-weight: 300;
+  font-family: 'Raleway',;
+}
+
+.input-change-profile{
+  margin-left: 2em;
+}
+
+.div-nav-link{
+  background-color: rgb(203, 241, 248);
+  height: 2em;
+  width: 15em;
+  padding-left: 1.5em;
+  padding-top: 0.2em;
+}

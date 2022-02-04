@@ -14,7 +14,6 @@ import Logout from "./pages/Logout";
 import Auth from "./pages/Auth";
 import Tickets from "./pages/HotelTicket";
 import Profile from "./pages/Profile";
-import BookTicket from "./pages/BookTicket";
 import DeleteAccount from "./pages/DeleteAccount";
 import ProfileSettings from "./pages/ProfileSettings";
 import FirstPage from "./pages/FirstPage";
@@ -61,7 +60,6 @@ export default function AppNav() {
 
         <Route path="/tickets" element={<Tickets />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/bookTicket" element={<BookTicket />} />
 
         <Route path="/" element={<HomePage />} />
 

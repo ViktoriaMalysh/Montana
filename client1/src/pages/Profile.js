@@ -48,6 +48,7 @@ function Profile() {
   return (
     <div className="div-page-profile">
       <div className="div-profile">
+        
         <img
           alt="Header"
           className="img-header"
