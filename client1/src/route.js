@@ -18,6 +18,7 @@ import DeleteAccount from "./pages/DeleteAccount";
 import ProfileSettings from "./pages/ProfileSettings";
 import FirstPage from "./pages/FirstPage";
 import HomePage from "./pages/HomePage";
+import Account from "./components/Account";
 
 export default function AppNav() {
   const store = useSelector((state) => state);
@@ -51,7 +52,8 @@ export default function AppNav() {
         <Route path="/auth" element={<Auth />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/deleteAccount" element={<DeleteAccount />} />
-        <Route path="/profileSettings" element={<ProfileSettings />} />
+        <Route path="/settings/profile" element={<ProfileSettings />} />
+        <Route path="/settings/account" element={<Account />} />
         
 
         {/* profileSettings */}
@@ -60,6 +62,10 @@ export default function AppNav() {
 
         <Route path="/tickets" element={<Tickets />} />
         <Route path="/profile" element={<Profile />} />
+
+
+        {/* <Route path="/profile" element={<Profile />} /> */}
+
 
         <Route path="/" element={<HomePage />} />
 

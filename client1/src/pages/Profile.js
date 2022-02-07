@@ -48,7 +48,6 @@ function Profile() {
   return (
     <div className="div-page-profile">
       <div className="div-profile">
-        
         <img
           alt="Header"
           className="img-header"
@@ -114,7 +113,7 @@ function Profile() {
         <button
           variant="warning"
           className="button-settings"
-          // onClick={() => navigate("/users/checkPass")}
+          onClick={() => navigate("/settings/profile")}
         >
           Profile Settings
         </button>
@@ -156,17 +155,17 @@ function Profile() {
           <button
             variant="warning"
             className="button-settings"
-            onClick={() => navigate("/profileSettings")}
+            onClick={() => navigate("/settings/profile")}
           >
             Profile Settings
           </button>
-          <button
+          {/* <button
             variant="warning"
             className="button-delete"
             onClick={() => navigate("/deleteAccount")}
           >
             Delete Account
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

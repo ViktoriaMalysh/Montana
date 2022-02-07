@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom";
 import "./profileSettings.css";
 import { deleteTickets, showMyTickets } from "../redux/actionTickets";
 import { DELETE } from "../redux/types";
-
+import "../profileSwttings.css"
 import NavBar from "../components/NavBar";
-import PublicProfile from "../components/PublicProfile";
+// import PublicProfile from "../components/PublicProfile";
 import { Modal } from "bootstrap";
 import { Link } from "react-router-dom";
 
-function ProfileSettings() {
+function Account() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const store = useSelector((state) => state);
@@ -49,7 +49,7 @@ function ProfileSettings() {
         <nav className="nav-change-profile">
           <NavBar />
         </nav>
-        <PublicProfile />
+        {/* <PublicProfile /> */}
         {/* <button
           variant="warning"
           className="button-settings"
@@ -66,4 +66,4 @@ function mapStateToProps(state) {
   return { store: state };
 }
 
-export default connect(mapStateToProps)(ProfileSettings);
+export default connect(mapStateToProps)(Account);
