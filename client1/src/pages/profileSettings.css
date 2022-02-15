@@ -190,6 +190,11 @@
   width: 15em;
 }
 
+.input-pass-save-change{
+  height: 2em;
+  width: 20em;
+}
+
 .p-block3-message{
   font-size: 0.9em;
   color: rgba(0, 0, 0, 0.623);

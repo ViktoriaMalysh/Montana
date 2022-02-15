@@ -66,10 +66,10 @@ module.exports.authentication = async function (req, ress) {
 
 module.exports.authorization = async function (req, ress) {
   const candidat = { email: req.body.email, password: req.body.password };
-  console.log('candidat', candidat)
+  console.log("candidat", candidat);
   try {
     const check_email_login = await checkEmail(candidat.email);
-    console.log('check_email_login', check_email_login)
+    console.log("check_email_login", check_email_login);
     if (check_email_login) {
       const pass = await checkPassword(candidat);
       const flag = bcrypt.compareSync(candidat.password, pass);
@@ -165,7 +165,7 @@ module.exports.verifyToken = async function (req, res) {
         });
       } else
         res.status(200).json({
-          token: token,   
+          token: token,
           id: user.id,
           name: check_email_login.name,
           surname: check_email_login.surname,
@@ -175,7 +175,7 @@ module.exports.verifyToken = async function (req, res) {
           phone: check_email_login.phone,
           email: check_email_login.email,
           role: check_email_login.role,
-        });  
+        });
     });
   } catch (err) {
     console.log("Error: " + err);
@@ -190,47 +190,43 @@ module.exports.changeProfile = async function (req, res) {
       id: req.body.id,
       name: req.body.name,
       surname: req.body.surname,
-      email: req.body.email,
-      password: req.body.password,
       gender: req.body.gender,
-      age: req.body.age,
+      dateOfBirth: req.body.dateOfBirth,
       country: req.body.country,
-      phone: req.body.phone,
     };
+    console.log(user)
 
-     User.findAll({ where: { id: user.id }, raw: true })
-      .then((result) => {
-        if (result) 
-          console.log('result', result)
-          const flag = bcrypt.compareSync(user.password, result[0].password)
-          console.log('flag', flag)
-        if (flag) {
-          User.update(
+    await User.findAll({ where: { id: user.id }, raw: true })
+      .then(async(result) => {
+        if (result) console.log("result", result);
+        // const flag = bcrypt.compareSync(user.password, result[0].password);
+   
+        // if (flag) {
+          await  User.update(
             {
               name: user.name,
               surname: user.surname,
               gender: user.gender,
-              age: user.age,
+              dateOfBirth: user.dateOfBirth,
               country: user.country,
-              phone: user.phone,
-              email: user.email,
             },
             { where: { id: user.id } }
           );
+  
           const newToken = jwt.sign(
             {
-              email: user.email,
-              password: user.password,
-              role: user.role,
+              email: result[0].email,
+              password: result[0].password,
+              role: result[0].role,
               id: user.id,
             },
             keys.jwt,
             { expiresIn: 600 }
           );
           res.status(200).json({ token: newToken, flag: true });
-        } else {
-          res.status(404).json({ error: "Invalid password" });
-        }
+        // } else {
+        //   res.status(404).json({ error: "Invalid password" });
+        // }
       })
       .catch((err) => console.log(err));
   } catch (err) {
@@ -293,9 +289,9 @@ checkPassword = async function (req, res) {
 
 checkEmail = async function (req, res) {
   const email = req;
-  console.log('email', email)
+  console.log("email", email);
   const result = await User.findOne({ where: { email: email }, raw: true });
-  console.log(result)
+  console.log(result);
   if (result === null) return false;
   else if (result.email === email) return result;
 };

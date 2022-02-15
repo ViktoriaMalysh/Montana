@@ -136,6 +136,7 @@
   grid-area: deleteAccount;
   margin-top: 1em;
   margin-left: 2em;
+  margin-bottom: 2em;
 }
 
 .button-delete{
@@ -157,5 +158,22 @@
 }
 
 
+.button-block3-save{
+  margin-top: 3em;
+  height: 3em;
+  width: 10em;
+  background-color: white;
+  border-color: rgb(0, 140, 255);
+  color:rgb(0, 140, 255);
+}
+
+.button-block3-save:hover{
+  margin-top: 3em;
+  height: 3em;
+  width: 10em;
+  color: white;
+  background-color: rgb(0, 140, 255);
+  border-color: rgb(0, 140, 255);
+}
 
 /* 2b4d0d94d60478aec3d30ec8d214e72ebbfb0bd7 */

@@ -3,10 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Row, Spinner, Button, Form, Col } from "react-bootstrap";
 import { useSelector, connect, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "./profileSettings.css";
+// import "./profileSettings.css";
 import { deleteTickets, showMyTickets } from "../redux/actionTickets";
 import { DELETE } from "../redux/types";
-import "../profileSwttings.css"
+import "../pages/profileSettings.css"
 import NavBar from "../components/NavBar";
 // import PublicProfile from "../components/PublicProfile";
 import { Modal } from "bootstrap";

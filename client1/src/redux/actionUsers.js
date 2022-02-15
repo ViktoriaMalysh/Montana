@@ -156,20 +156,18 @@ export const fetchDelete = (token) => {
   };
 };
 
-export const fetchChange = (id, name, surname, gender, age, country, phone, email, password) => {
+export const fetchChange = ( user ) => {
   return (dispatch) => {
     dispatch(requestUser());
+    // console.log(id, name, surname, gender, dateOfBirth, country)
     axios
       .post(`http://localhost:8000/users/changeProfile`, {
-        id: id,
-        name: name,
-        surname: surname,
-        gender: gender,
-        age: age,
-        country: country,
-        phone: phone,
-        email: email,
-        password: password,
+        id: user.id,
+        name: user.name,
+        surname: user.surname,
+        gender: user.gender,
+        dateOfBirth: user.dateOfBirth,
+        country: user.country,
       })
       .then((res) => {
         if (res.data.error) dispatch({ type: ERROR, payload: res.data.error });
