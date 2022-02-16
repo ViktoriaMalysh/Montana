@@ -1,0 +1,27 @@
+.div-profile-settings {
+  margin-top: 1.5em;
+  grid-area: profile;
+  min-height: 57em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "navBar block2 block2 block2 block2 ";
+}
+
+.div-prof-sett-block3 {
+  grid-area: block2;
+  height: 5em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+    "titleBlock2 titleBlock2 titleBlock2 titleBlock2 "  
+    "myselfChange myselfChange myselfChange myselfChange "
+  ;
+}
+
+.p-block3-message-email{
+  font-size: 0.9em;
+  color: rgba(0, 0, 0, 0.623);
+  font-weight: 300;
+  font-family: "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  margin-right: 25em;
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Row, Spinner, Button, Form, Col } from "react-bootstrap";
 import { useSelector, connect, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./profileSettings.css";
 import { deleteTickets, showMyTickets } from "../redux/actionTickets";
 import { DELETE } from "../redux/types";
@@ -11,6 +11,8 @@ import NavBar from "../components/NavBar";
 import PublicProfile from "../components/PublicProfile";
 import { Modal } from "bootstrap";
 import { Link } from "react-router-dom";
+import PublicEmail from "../components/PublicEmail";
+import PublicPassword from "../components/PublicPassword";
 
 function ProfileSettings() {
   let navigate = useNavigate();
@@ -49,14 +51,13 @@ function ProfileSettings() {
         <nav className="nav-change-profile">
           <NavBar />
         </nav>
-        <PublicProfile />
-        {/* <button
-          variant="warning"
-          className="button-settings"
-          // onClick={() => navigate("/users/checkPass")}
-        >
-          Profile Settings
-        </button> */}
+        <Routes>
+          <Route path="profile" element={<PublicProfile />} />
+          <Route path="email" element={<PublicEmail />} />
+          <Route path="password" element={<PublicPassword />} />
+        </Routes>
+        {/* <PublicProfile /> */}
+
       </div>
     </div>
   );

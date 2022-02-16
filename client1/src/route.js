@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, useRouteMatch, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import { useSelector } from "react-redux";
 import CountryItaly from "./pages/countries/italy";
@@ -19,6 +19,8 @@ import ProfileSettings from "./pages/ProfileSettings";
 import FirstPage from "./pages/FirstPage";
 import HomePage from "./pages/HomePage";
 import Account from "./components/Account";
+import PublicEmail from "./components/PublicEmail";
+
 
 export default function AppNav() {
   const store = useSelector((state) => state);
@@ -52,8 +54,13 @@ export default function AppNav() {
         <Route path="/auth" element={<Auth />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/deleteAccount" element={<DeleteAccount />} />
-        <Route path="/settings/profile" element={<ProfileSettings />} />
-        <Route path="/settings/account" element={<Account />} />
+
+        <Route path="/settings/*" element={<ProfileSettings />} />
+        {/* <Route path="/settings/account" element={<Account />} />
+        <Route path="/settings/email" element={<Account />} />
+        <Route path="/settings/password" element={<Account />} />
+        <Route path="/settings/phone" element={<Account />} />
+        <Route path="/settings/cards" element={<Account />} /> */}
         
 
         {/* profileSettings */}

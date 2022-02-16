@@ -30,13 +30,11 @@ const initialState = {
   isAuth: false,
   userName: "",
   userSurname: "",
-  // userCountProject: 0,
   userGender: "",
-  userAge: 0,
   userCountry: "",
-
   userDateOfBirth: "",
-    userPhone: 0,
+  userDate: '',
+  userPhone: 0,
   userEmail: "",
   userPassword: "",
   userRole: 0,
@@ -50,7 +48,6 @@ const initialState = {
   text: false,
   flagSuccess: false,
   countHotelTickets: 0,
-  countAviaTickets: 0,
 };
 
 export const reducerUsers = (state = initialState, action) => {

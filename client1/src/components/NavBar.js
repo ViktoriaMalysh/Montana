@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import PublicEmail from "./PublicEmail";
 
 function NavBar(){
+
+
   return(
     <>
     <div className="nav-link-profile">
@@ -27,7 +30,7 @@ function NavBar(){
           <div className="nav-link-profile">
             <Link
               style={{ textDecoration: "none", color: "black" }}
-              to={"/settings/emails"}
+              to={"/settings/email"}
             >
               <div className="div-nav-link">Emails</div>
             </Link>

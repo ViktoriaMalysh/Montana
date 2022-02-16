@@ -159,7 +159,6 @@ export const fetchDelete = (token) => {
 export const fetchChange = ( user ) => {
   return (dispatch) => {
     dispatch(requestUser());
-    // console.log(id, name, surname, gender, dateOfBirth, country)
     axios
       .post(`http://localhost:8000/users/changeProfile`, {
         id: user.id,
@@ -183,6 +182,30 @@ export const fetchChange = ( user ) => {
       );
   };
 };
+
+export const fetchChangeEmail = ( user ) => {
+  return (dispatch) => {
+    dispatch(requestUser());
+    axios
+      .post(`http://localhost:8000/users/changeEmail`, {
+        id: user.id,
+        email: user.email,
+      })
+      .then((res) => {
+        if (res.data.error) dispatch({ type: ERROR, payload: res.data.error });
+        else {
+          localStorage.setItem("token", res.data.token);
+          dispatch({ type: CHANGE, payload: true });
+        }
+        dispatch(alert("Success!"));
+      })
+      .then(
+        (data) => dispatch(requestSuccessUser(data)),
+        (err) => dispatch(requestErrorUser(err, "User not found"))
+      );
+  };
+};
+
 
 export const fetchChangePass = (id, password) => {
   return (dispatch) => {

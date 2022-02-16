@@ -3,8 +3,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
+  ". . alert1 alert1 alert1 alert1 . . . ."
     ". . block7 block7 . . . block8 . ."
     ". . profile profile profile profile profile profile . .";
+}
+
+.alert{
+  grid-area: alert1;
 }
 
 .div-prof-sett-block1 {

@@ -194,39 +194,70 @@ module.exports.changeProfile = async function (req, res) {
       dateOfBirth: req.body.dateOfBirth,
       country: req.body.country,
     };
-    console.log(user)
+    console.log(user);
 
     await User.findAll({ where: { id: user.id }, raw: true })
-      .then(async(result) => {
+      .then(async (result) => {
         if (result) console.log("result", result);
-        // const flag = bcrypt.compareSync(user.password, result[0].password);
-   
-        // if (flag) {
-          await  User.update(
-            {
-              name: user.name,
-              surname: user.surname,
-              gender: user.gender,
-              dateOfBirth: user.dateOfBirth,
-              country: user.country,
-            },
-            { where: { id: user.id } }
-          );
-  
-          const newToken = jwt.sign(
-            {
-              email: result[0].email,
-              password: result[0].password,
-              role: result[0].role,
-              id: user.id,
-            },
-            keys.jwt,
-            { expiresIn: 600 }
-          );
-          res.status(200).json({ token: newToken, flag: true });
-        // } else {
-        //   res.status(404).json({ error: "Invalid password" });
-        // }
+
+        await User.update(
+          {
+            name: user.name,
+            surname: user.surname,
+            gender: user.gender,
+            dateOfBirth: user.dateOfBirth,
+            country: user.country,
+          },
+          { where: { id: user.id } }
+        );
+
+        const newToken = jwt.sign(
+          {
+            email: result[0].email,
+            password: result[0].password,
+            role: result[0].role,
+            id: user.id,
+          },
+          keys.jwt,
+          { expiresIn: 600 }
+        );
+        res.status(200).json({ token: newToken, flag: true });
+      })
+      .catch((err) => console.log(err));
+  } catch (err) {
+    console.log("Error: " + err);
+    res.status(404).json({ flag: false });
+  }
+};
+
+module.exports.changeEmail = async function (req, res) {
+  try {
+    await User.sequelize.sync({ alter: true });
+    const user = {
+      id: req.body.id,
+      email: req.body.email,
+    };
+    await User.findAll({ where: { id: user.id }, raw: true })
+      .then(async (result) => {
+        if (result) 
+        await User.update(
+          {
+            email: user.email,
+          },
+          { where: { id: user.id } }
+        );
+
+        const newToken = jwt.sign(
+          {
+            email: user.email,
+            password: result[0].password,
+            role: result[0].role,
+            id: user.id,
+          },
+          keys.jwt,
+          { expiresIn: 600 }
+        );
+        res.status(200).json({ token: newToken, flag: true });
       })
       .catch((err) => console.log(err));
   } catch (err) {

@@ -2,7 +2,11 @@ import { Button, Modal } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { fetchChange, fetchChangePass } from "../redux/actionUsers";
+import {
+  fetchChange,
+  fetchChangePass,
+  fetchVerifyToken,
+} from "../redux/actionUsers";
 
 function PublicProfile() {
   const store = useSelector((state) => state);
@@ -11,13 +15,11 @@ function PublicProfile() {
 
   const [show, setShow] = useState(false);
 
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [gender, setGender] = useState("");
-  const [country, setCountry] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-
-
+  const [name, setName] = useState(store.users.userName);
+  const [surname, setSurname] = useState(store.users.userSurname);
+  const [gender, setGender] = useState(store.users.userGender);
+  const [country, setCountry] = useState(store.users.userCountry);
+  const [dateOfBirth, setDateOfBirth] = useState(store.users.userDateOfBirth);
   const [password, setPassword] = useState("");
 
   const handleClose = () => setShow(false);
@@ -27,20 +29,29 @@ function PublicProfile() {
     if (store.users.flag) {
       const changeProfile = {
         id: store.users.userId,
-        name: name,
-        surname: surname,
-        gender: gender,
-        country: country,
-        dateOfBirth: dateOfBirth,
+        name: name !== '' ? name : store.users.userName,
+        surname: surname !== '' ? surname : store.users.userSurname,
+        gender: gender !== '' ? gender : store.users.userGender,
+        country: country !== '' ? country : store.users.userCountry,
+        dateOfBirth: dateOfBirth !== '' ? dateOfBirth : store.users.userDateOfBirth,
       };
       dispatch(fetchChange(changeProfile));
     }
   }, [store.users.flag]);
 
+  useEffect(() => {
+    if (store.users.change) {
+      const token = localStorage.getItem("token");
+      dispatch(fetchVerifyToken(token));
+    }
+  }, [store.users.change]);
+
   const handleUpdate = () => {
     console.log("password", password);
     console.log("id", store.users.userId);
     dispatch(fetchChangePass(store.users.userId, password));
+    console.log('name', name)
+    console.log('surname', surname)
   };
 
   return (
@@ -109,6 +120,7 @@ function PublicProfile() {
             name="surname"
             defaultValue={store.users.userSurname}
             onChange={(e) => setSurname(e.target.value)}
+
           ></input>
           <p className="p-block3-message">
             Your name and surname may appear around Montana where you contribute
@@ -124,6 +136,7 @@ function PublicProfile() {
             name="email"
             defaultValue={store.users.userCountry}
             onChange={(e) => setCountry(e.target.value)}
+
           ></input>
         </div>
         <div className="div-block3">
@@ -133,7 +146,7 @@ function PublicProfile() {
             id="start"
             className="input-data"
             name="trip-start"
-            defaultValue="2020-07-22"
+            defaultValue={store.users.userDateOfBirth}
             min="1960-01-01"
             max="2018-12-31"
             onChange={(e) => setDateOfBirth(e.target.value)}
