@@ -39,7 +39,7 @@ const initialState = {
   userPassword: "",
   userRole: 0,
   userId: 0,
-  flag: false,
+  flag: '',
   err: false,
   error: "",
   success: false,

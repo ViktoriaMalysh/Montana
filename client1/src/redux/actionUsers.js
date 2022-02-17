@@ -37,6 +37,20 @@ const requestErrorUser = (err, message) => {
   };
 };
 
+
+const requestSuccessUserPass = () => {
+  return { type: REQUESTED_SUCCEEDED_USER };
+};
+
+const requestErrorUserPass = (err) => {
+  return (dispatch) => {
+    console.log("Error:", err);
+    dispatch({ type: REQUESTED_FAILED_USER });
+    dispatch({ type: FLAG, payload: false });
+
+  };
+};
+
 const alert = (message) => {
   return (dispatch) => {
     dispatch({ type: SHOW_ALERT, payload: message });
@@ -207,6 +221,28 @@ export const fetchChangeEmail = ( user ) => {
 };
 
 
+export const fetchChangePhone = ( user ) => {
+  return (dispatch) => {
+    dispatch(requestUser());
+    axios
+      .post(`http://localhost:8000/users/changePhone`, {
+        id: user.id,
+        phone: user.phone,
+      })
+      .then((res) => {
+        if (res.data.error) dispatch({ type: ERROR, payload: res.data.error });
+        else {
+          dispatch({ type: CHANGE, payload: true });
+        }
+        dispatch(alert("Success!"));
+      })
+      .then(
+        (data) => dispatch(requestSuccessUser(data)),
+        (err) => dispatch(requestErrorUser(err, "User not found"))
+      );
+  };
+};
+
 export const fetchChangePass = (id, password) => {
   return (dispatch) => {
     dispatch(requestUser());
@@ -216,10 +252,34 @@ export const fetchChangePass = (id, password) => {
         password: password,
       })
       .then((res) => {
-        if (res.data.error) dispatch({ type: ERROR, payload: res.data.error });
-        else dispatch({ type: FLAG, payload: true });
+        console.log('res.data.flag ',res.data.flag )
+        dispatch({ type: FLAG, payload: res.data.flag });
 
         dispatch(alert("Success!"));
+      })
+      .then(
+        (data) => dispatch(requestSuccessUserPass(data)),
+        (err) => dispatch(requestErrorUserPass(err))
+      );
+  };
+};
+
+
+export const fetchChangePassword = ( user ) => {
+  return (dispatch) => {
+    dispatch(requestUser());
+    axios
+      .post(`http://localhost:8000/users/changePassword`, {
+        id: user.id,
+        password: user.password,
+      })
+      .then((res) => {
+        if (res.data.error) dispatch({ type: ERROR, payload: res.data.error });
+        else {
+          localStorage.setItem("token", res.data.token);
+          dispatch({ type: CHANGE, payload: true });
+        }
+        // dispatch(alert("Success!"));
       })
       .then(
         (data) => dispatch(requestSuccessUser(data)),

@@ -239,13 +239,13 @@ module.exports.changeEmail = async function (req, res) {
     };
     await User.findAll({ where: { id: user.id }, raw: true })
       .then(async (result) => {
-        if (result) 
-        await User.update(
-          {
-            email: user.email,
-          },
-          { where: { id: user.id } }
-        );
+        if (result)
+          await User.update(
+            {
+              email: user.email,
+            },
+            { where: { id: user.id } }
+          );
 
         const newToken = jwt.sign(
           {
@@ -266,6 +266,72 @@ module.exports.changeEmail = async function (req, res) {
   }
 };
 
+module.exports.changePhone = async function (req, res) {
+  try {
+    await User.sequelize.sync({ alter: true });
+    const user = {
+      id: req.body.id,
+      phone: req.body.phone,
+    };
+    await User.findAll({ where: { id: user.id }, raw: true })
+      .then(async (result) => {
+        if (result)
+          await User.update(
+            {
+              phone: user.phone,
+            },
+            { where: { id: user.id } }
+          );
+
+        res.status(200).json({ flag: true });
+      })
+      .catch((err) => console.log(err));
+  } catch (err) {
+    console.log("Error: " + err);
+    res.status(404).json({ flag: false });
+  }
+};
+
+module.exports.changePassword = async function (req, res) {
+  try {
+    await User.sequelize.sync({ alter: true });
+    const user = {
+      id: req.body.id,
+      password: req.body.password,
+    };
+    await User.findAll({ where: { id: user.id }, raw: true })
+      .then(async (result) => {
+        if (result) {
+          const salt = bcrypt.genSaltSync(10);
+          const pass = bcrypt.hashSync(user.password, salt);
+
+          await User.update(
+            {
+              password: pass,
+            },
+            { where: { id: user.id } }
+          );
+
+          const newToken = jwt.sign(
+            {
+              email: result[0].email,
+              password: pass,
+              role: result[0].role,
+              id: user.id,
+            },
+            keys.jwt,
+            { expiresIn: 600 }
+          );
+          res.status(200).json({ token: newToken, flag: true });
+        }
+      })
+      .catch((err) => console.log(err));
+  } catch (err) {
+    console.log("Error: " + err);
+    res.status(404).json({ flag: false });
+  }
+};
+
 module.exports.validatePassword = async function (req, res) {
   const user = {
     id: req.body.id,
@@ -276,8 +342,8 @@ module.exports.validatePassword = async function (req, res) {
     if (result) {
       const flag = bcrypt.compareSync(user.password, result[0].password);
       if (flag) res.status(200).json({ flag: true });
-      else if (!flag) res.status(404).json({ error: "Invalid password" });
-    } else res.status(404).json({ error: "Invalid password" });
+      else if (!flag) res.status(404).json({ flag: false });
+    } else res.status(404).json({ flag: false });
   });
 };
 

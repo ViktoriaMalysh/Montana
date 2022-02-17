@@ -13,6 +13,7 @@ import { Modal } from "bootstrap";
 import { Link } from "react-router-dom";
 import PublicEmail from "../components/PublicEmail";
 import PublicPassword from "../components/PublicPassword";
+import PublicPhone from "../components/PublicPhone";
 
 function ProfileSettings() {
   let navigate = useNavigate();
@@ -55,6 +56,7 @@ function ProfileSettings() {
           <Route path="profile" element={<PublicProfile />} />
           <Route path="email" element={<PublicEmail />} />
           <Route path="password" element={<PublicPassword />} />
+          <Route path="phone" element={<PublicPhone />} />
         </Routes>
         {/* <PublicProfile /> */}
 

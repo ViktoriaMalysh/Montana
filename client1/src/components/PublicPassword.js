@@ -5,29 +5,41 @@ import { useNavigate } from "react-router";
 import {
   fetchChangeEmail,
   fetchChangePass,
+  fetchChangePassword,
   fetchVerifyToken,
 } from "../redux/actionUsers";
 import "../pages/publicEmail.css";
 // import "../publicEmail.css";
-import { CHANGE } from "../redux/types";
+import { CHANGE, FLAG } from "../redux/types";
 
 function PublicPassword() {
   const store = useSelector((state) => state);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [show, setShow] = useState(false);
+  const [showOld, setShowOld] = useState(false);
+  const [showNew, setShowNew] = useState(false);
+
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
   useEffect(() => {
-    if (store.users.flag) {
+    if (!store.users.flag && store.users.flag!=='') {
+      setShowOld(true);
+      setTimeout(() => {
+        setShowOld(false);
+        dispatch({ type: FLAG, payload: '' });
+      }, 3000);
+    } else if(store.users.flag && store.users.flag!==''){
       const changePassword = {
         id: store.users.userId,
         password: newPassword,
       };
-      // dispatch(fetchChangePassword(changePassword));
+      dispatch(fetchChangePassword(changePassword));
+      setTimeout(() => {
+        dispatch({ type: FLAG, payload: '' });
+      }, 1000);
     }
   }, [store.users.flag]);
 
@@ -42,29 +54,21 @@ function PublicPassword() {
   }, [store.users.change]);
 
   const handleUpdate = () => {
-    if (newPassword === confirmNewPassword) {
+    if (
+      newPassword === confirmNewPassword &&
+      newPassword !== "" &&
+      confirmNewPassword !== ""
+    ) {
       dispatch(fetchChangePass(store.users.userId, oldPassword));
     } else {
-      setShow(true)
+      setShowNew(true);
       setTimeout(() => {
-        setShow(false)
-      }, 1000)
+        setShowNew(false);
+      }, 3000);
     }
   };
 
   return (
-    <>
-    <Alert variant="info" className='alert' show={show}>
-    Password mismatch/Your current password is not correct
-  </Alert>
-
-  <div className="alertGrid">
-    <div className="alertMessage">
-      <div className="alert alert-warning" role="alert">
-        {text}
-      </div>
-    </div>
-  </div>
     <div className="div-prof-sett-block3">
       <div className="div-block2">
         <p className="p-block2-title">Change password</p>
@@ -80,6 +84,9 @@ function PublicPassword() {
             name="password"
             onChange={(e) => setOldPassword(e.target.value)}
           ></input>
+          <Alert variant="info" className="alert" show={showOld}>
+            Password mismatch
+          </Alert>
         </div>
         <div className="div-block3">
           <p className="p-change-myself">New password </p>
@@ -98,6 +105,10 @@ function PublicPassword() {
             name="password"
             onChange={(e) => setConfirmNewPassword(e.target.value)}
           ></input>
+
+          <Alert variant="info" className="alert" show={showNew}>
+            Your current password is not correct
+          </Alert>
         </div>
 
         <div className="div-block3-button-save">
@@ -107,7 +118,6 @@ function PublicPassword() {
         </div>
       </div>
     </div>
-    </>
   );
 }
 

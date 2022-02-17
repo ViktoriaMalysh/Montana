@@ -14,6 +14,12 @@ router.post('/changeProfile', usersPoint.changeProfile)
 //localhost:8000/users/changeEmail
 router.post('/changeEmail', usersPoint.changeEmail)
 
+//localhost:8000/users/changeEmail
+router.post('/changePhone', usersPoint.changePhone)
+
+//localhost:8000/users/changeEmail
+router.post('/changePassword', usersPoint.changePassword)
+
 //localhost:8000/users/verifyToken
 router.post('/verifyToken', usersPoint.verifyToken)
 
