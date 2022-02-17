@@ -45,6 +45,11 @@ function Profile() {
     else if (more) setMore(false);
   };
 
+
+  const buyTicket = (id) => {
+    //payment metod
+  }
+
   return (
     <div className="div-page-profile">
       <div className="div-profile">
@@ -146,6 +151,12 @@ function Profile() {
                   >
                     Cancel Book
                   </button>
+                  <button
+                    className="button-settings"
+                    onClick={() => buyTicket(item.id)}
+                  >
+                    Buy a Ticket
+                  </button>
                 </Card.Body>
               </Card>
             ))}
@@ -153,7 +164,6 @@ function Profile() {
         </div>
         <div className="div-button-delete">
           <button
-            variant="warning"
             className="button-settings"
             onClick={() => navigate("/settings/profile")}
           >

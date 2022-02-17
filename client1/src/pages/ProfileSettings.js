@@ -14,6 +14,8 @@ import { Link } from "react-router-dom";
 import PublicEmail from "../components/PublicEmail";
 import PublicPassword from "../components/PublicPassword";
 import PublicPhone from "../components/PublicPhone";
+import PublicAccount from "../components/PublicAccount";
+
 
 function ProfileSettings() {
   let navigate = useNavigate();
@@ -57,6 +59,7 @@ function ProfileSettings() {
           <Route path="email" element={<PublicEmail />} />
           <Route path="password" element={<PublicPassword />} />
           <Route path="phone" element={<PublicPhone />} />
+          <Route path="account" element={<PublicAccount />} />
         </Routes>
         {/* <PublicProfile /> */}
 
