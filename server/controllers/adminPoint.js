@@ -12,7 +12,7 @@ module.exports.showAviaTicketsAdmin = async function(req,res){
     console.log('Error: ' + err)     
     res.status(404).json({ flag: true })
   }
-}  
+}     
 
 module.exports.showTicketsAdmin = async function(req,res){
   try{

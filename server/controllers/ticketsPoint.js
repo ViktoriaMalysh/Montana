@@ -1,8 +1,12 @@
 const { HotelTicket } = require("../sequelize");
 const sequelize = require("../sequelize");
-const dotenv = require('dotenv')
+// const dotenv = require('dotenv')
 const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST)
-require("dotenv").config()
+// require("dotenv").config()
+
+
+// const Stripe = require('stripe');
+// const stripe = Stripe(process.env.STRIPE_SECRET_TEST);
 
 module.exports.booking1 = async function (req, res) {
   console.log("candidat", req.body);
@@ -67,7 +71,7 @@ module.exports.showMyBookingTicket = async function (req, res) {
 };
 
 module.exports.payment = async function (req, res) {
-  let { amount, id } = req.body
+	let { amount, id } = req.body
 	try {
 		const payment = await stripe.paymentIntents.create({
 			amount,

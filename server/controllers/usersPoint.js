@@ -8,7 +8,7 @@ module.exports.authentication = async function (req, ress) {
   let candidat = {
     name: req.body.name,
     surname: req.body.surname,
-    email: req.body.email,
+    email: req.body.email,   
     password: req.body.password,
     role: 1,
   };
