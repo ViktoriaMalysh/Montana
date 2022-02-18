@@ -1,5 +1,8 @@
 const { HotelTicket } = require("../sequelize");
 const sequelize = require("../sequelize");
+const dotenv = require('dotenv')
+const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST)
+require("dotenv").config()
 
 module.exports.booking1 = async function (req, res) {
   console.log("candidat", req.body);
@@ -14,7 +17,7 @@ module.exports.booking1 = async function (req, res) {
       locality: req.body.locality,
       price: req.body.price,
       url: req.body.url,
-    };
+    };    
     console.log("ticket", tickets);
     let ticket = HotelTicket.build({
       id_user: tickets.id_user,
@@ -61,4 +64,28 @@ module.exports.showMyBookingTicket = async function (req, res) {
     console.log("Error: " + err);
     res.status(404).json({ flag: true });
   }
+};
+
+module.exports.payment = async function (req, res) {
+  let { amount, id } = req.body
+	try {
+		const payment = await stripe.paymentIntents.create({
+			amount,
+			currency: "USD",
+			description: "Spatula company",
+			payment_method: id,
+			confirm: true
+		})
+		console.log("Payment", payment)
+		res.json({
+			message: "Payment successful",
+			success: true
+		})
+	} catch (error) {
+		console.log("Error", error)
+		res.json({
+			message: "Payment failed",
+			success: false
+		})
+	}
 };

@@ -20,6 +20,7 @@ import FirstPage from "./pages/FirstPage";
 import HomePage from "./pages/HomePage";
 import Account from "./components/Account";
 import PublicEmail from "./components/PublicEmail";
+// import StripeCheckoutButton from '../src/components/stripe.button.component';
 
 
 export default function AppNav() {
@@ -69,6 +70,8 @@ export default function AppNav() {
 
         <Route path="/tickets" element={<Tickets />} />
         <Route path="/profile" element={<Profile />} />
+
+        {/* <Route path="/payment" element={<StripeCheckoutButton />} /> */}
 
 
         {/* <Route path="/profile" element={<Profile />} /> */}

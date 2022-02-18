@@ -24,6 +24,7 @@ import {
   COUNT_TICKET,
   COUNT_HOTEL_TICKET,
   USER_DATE_OF_BIRTH,
+  CURRENT_PRICE,
 } from "./types";
 
 const initialState = {
@@ -33,13 +34,14 @@ const initialState = {
   userGender: "",
   userCountry: "",
   userDateOfBirth: "",
-  userDate: '',
+  userDate: "",
   userPhone: 0,
   userEmail: "",
   userPassword: "",
   userRole: 0,
   userId: 0,
-  flag: '',
+  currentPrice: 0,
+  flag: "",
   err: false,
   error: "",
   success: false,
@@ -76,6 +78,8 @@ export const reducerUsers = (state = initialState, action) => {
       return { ...state, userRole: action.payload };
     case USER_ID:
       return { ...state, userId: action.payload };
+    case CURRENT_PRICE:
+      return { ...state, currentPrice: action.payload };
     case CLEAR_USER:
       return initialState;
     case REQUESTED_USER:

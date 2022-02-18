@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Card, Row, Spinner, Button } from "react-bootstrap";
+import { Card, Row, Spinner, Button, Modal } from "react-bootstrap";
 import { useSelector, connect, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./profile.css";
 import { deleteTickets, showMyTickets } from "../redux/actionTickets";
-import { DELETE } from "../redux/types";
+import { CURRENT_PRICE, DELETE } from "../redux/types";
+import StripeContainer from "../components/StripeContainer";
+
 
 function Profile() {
   let navigate = useNavigate();
@@ -13,6 +15,8 @@ function Profile() {
   const store = useSelector((state) => state);
   const loading = useSelector((state) => state.app.loading);
   const [more, setMore] = useState(false);
+  const [show, setShow] = useState(false);
+
 
   useEffect(() => {
     dispatch(showMyTickets(store.users.userId));
@@ -34,6 +38,10 @@ function Profile() {
       </div>
     );
   }
+  const totalPrice = 58;
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const cancelBook = (id) => {
     dispatch(deleteTickets(id));
@@ -45,13 +53,41 @@ function Profile() {
     else if (more) setMore(false);
   };
 
+  const buyTicket = (id, price) => {
+setShow(true)
 
-  const buyTicket = (id) => {
-    //payment metod
-  }
+  };
 
   return (
     <div className="div-page-profile">
+       <Modal
+        show={show}
+        onHide={() => handleClose()}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title className="modal-title">Warning</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* <div className="div-body">
+            <p className="p-book-hotel">Enter your password to save changes</p>
+            <input
+              className="input-pass-save-change"
+              type="password"
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div> */}
+    <StripeContainer />
+
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <div className="div-profile">
         <img
           alt="Header"
@@ -153,7 +189,7 @@ function Profile() {
                   </button>
                   <button
                     className="button-settings"
-                    onClick={() => buyTicket(item.id)}
+                    onClick={() => buyTicket(item.id, item.price)}
                   >
                     Buy a Ticket
                   </button>
@@ -169,13 +205,6 @@ function Profile() {
           >
             Profile Settings
           </button>
-          {/* <button
-            variant="warning"
-            className="button-delete"
-            onClick={() => navigate("/deleteAccount")}
-          >
-            Delete Account
-          </button> */}
         </div>
       </div>
     </div>
