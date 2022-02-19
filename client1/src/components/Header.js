@@ -6,6 +6,7 @@ import { useSelector, useDispatch, connect } from "react-redux";
 import { REQUESTED_SUCCEEDED_CLOSE_USER } from "../redux/types";
 import { fetchVerifyToken } from "../redux/actionUsers";
 import { showMyTickets } from "../redux/actionTickets";
+import { showSaleTickets } from "../redux/actionTickets";
 
 function Header() {
   const store = useSelector((state) => state);
@@ -16,6 +17,8 @@ function Header() {
     const token = localStorage.getItem("token");
     dispatch(fetchVerifyToken(token));
     dispatch(showMyTickets(store.users.userId));
+    dispatch(showSaleTickets());
+
     setTimeout(() => {
       dispatch({ type: REQUESTED_SUCCEEDED_CLOSE_USER });
     }, 1000);

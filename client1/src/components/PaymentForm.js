@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./payment.css"
 
 const CARD_OPTIONS = {
@@ -27,6 +28,8 @@ export default function PaymentForm() {
   const [success, setSuccess] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+  const dispatch = useDispatch();
+  const store = useSelector((state) => state);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,8 +41,9 @@ export default function PaymentForm() {
     if (!error) {
       try {
         const { id } = paymentMethod;
+        const price = store.users.currentPrice * 100
         const response = await axios.post("http://localhost:8000/payment", {
-          amount: 1000,
+          amount: price,
           id,
         });     
 
@@ -64,7 +68,7 @@ export default function PaymentForm() {
               <CardElement options={CARD_OPTIONS} />
             </div>
           </fieldset>
-          <button>Pay</button>
+          <button className='buttom-payment'>Pay</button>
         </form>
       ) : (
         <div>

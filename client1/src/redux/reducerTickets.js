@@ -23,12 +23,15 @@ import {
   LOCALITY,
   PRICE,
   DELETE,
+  SHOW_SALE,
 } from "./types";
 
 const initialState = {
   nameCountry: "",
   showTickets: [{}],
   showMyTickets: [{}],
+
+  sale: {},
   loading: false,
   country: "",
   err: false,
@@ -54,6 +57,8 @@ export const reducerTickets = (state = initialState, action) => {
       return { ...state, reserved: action.payload };
     case FIND:
       return { ...state, find: action.payload };
+      case SHOW_SALE:
+        return { ...state, sale: action.payload };
     case DELETE:
       return { ...state, delete: action.payload };
     case COUNTRY:

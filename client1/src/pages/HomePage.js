@@ -1,24 +1,120 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "../components/Slider";
 import "./homePage.css";
 import ReactPlayer from "react-player";
-import {
-  Card,
-  CardGroup,
-  FormControl,
-  Button,
-  InputGroup,
-  ButtonToolbar,
-  ButtonGroup,
-} from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addTicket, showSaleTickets } from "../redux/actionTickets";
+import { REQUESTED_SUCCEEDED_CLOSE_USER } from "../redux/types";
+import { fetchVerifyToken } from "../redux/actionUsers";
 
 export default function Home() {
+  const store = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const [ticket, setTicket] = useState({});
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   dispatch(fetchVerifyToken(token));
+  //   // dispatch(showMyTickets(store.users.userId));
+  //   dispatch(showSaleTickets());
+
+  //   setTimeout(() => {
+  //     dispatch({ type: REQUESTED_SUCCEEDED_CLOSE_USER });
+  //   }, 1000);
+  // }, []);
+
+  const handleBookTicket = () => {
+    dispatch(
+      addTicket(
+        store.users.userId,
+        ticket.country,
+        ticket.address,
+        ticket.locality,
+        ticket.price,
+        ticket.url
+      )
+    );
+    setShow(false);
+  };
+
+  const handleBook = (id) => {
+    switch (id) {
+      case 1:
+        setTicket(store.tickets.sale[0]);
+        setShow(true);
+        break;
+      case 2:
+        setTicket(store.tickets.sale[1]);
+        setShow(true);
+        break;
+      case 3:
+        setTicket(store.tickets.sale[2]);
+        setShow(true);
+        break;
+    }
+  };
+
   return (
     <div className="div-home">
+      <Modal
+        show={show}
+        onHide={() => handleClose()}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title className="modal-title">
+          {ticket.country}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <img alt="Header" className="img-hotel" src={ticket.url} />
+          <div className="div-body">
+            <p className="p-book-hotel">
+              Address:{" "}
+              <span style={{ fontStyle: "italic" }}>{ticket.address}</span>
+            </p>
+            <p className="p-book-hotel">
+              Locality:{" "}
+              <span style={{ fontStyle: "italic" }}>{ticket.locality}</span>
+            </p>
+            <p className="p-book-hotel">
+              Price After:{" "}
+              <span style={{ fontStyle: "italic" }}>$ {ticket.priceAfter}</span>
+            </p>
+            <p className="p-book-hotel">
+              Price Before:{" "}
+              <span style={{ fontStyle: "italic" }}>
+                $ {ticket.priceBefore}
+              </span>
+            </p>
+            <p className="p-book-hotel">
+              Discount:{" "}
+              <span style={{ fontStyle: "italic" }}>$ {ticket.discount}</span>
+            </p>
+            <p className="text-message">
+              If all the data is correct, then confirm the reservation:
+            </p>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={()=>handleClose()}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={()=>handleBookTicket()}>
+            Confirm
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <div className="home">
         <div className="div-home-slider">
-          <Slider />
+          {/* <Slider /> */}
         </div>
         <div className="div-home-about-text">
           <p className="p-title1">About Us</p>
@@ -55,27 +151,63 @@ export default function Home() {
             <p className="p-2-sale-text">&#8226; Luxaries condition</p>
             <p className="p-2-sale-text">&#8226; 3 Adults & 2 Children size</p>
             <p className="p-2-sale-text">&#8226; Sea view side</p>
-            <button className="button-sale">Book Now</button>
+            <p className="p-2-sale-text-2">
+              Price Bofore: ${" "}
+              {store.tickets.sale[0] && store.tickets.sale[0].priceBefore}{" "}
+              (After ${" "}
+              {store.tickets.sale[0] && store.tickets.sale[0].priceAfter})
+            </p>
+            <p className="p-2-sale-text">
+              Discount: ${" "}
+              {store.tickets.sale[0] && store.tickets.sale[0].discount}
+            </p>
+            <button className="button-sale" onClick={() => handleBook(1)}>
+              Book Now
+            </button>
           </div>
           <div className="div-2-sale-2">
-            <img src="https://preview.colorlib.com/theme/montana/img/offers/x1.png.pagespeed.ic.CPgqevbSyX.webp"></img>
+            <img src="https://preview.colorlib.com/theme/montana/img/offers/x2.png.pagespeed.ic.MbYDoANTJ3.webp"></img>
             <p className="p-2-sale-title">
               Up to 35% savings on Club rooms and Suites
             </p>
             <p className="p-2-sale-text">&#8226; Luxaries condition</p>
             <p className="p-2-sale-text">&#8226; 3 Adults & 2 Children size</p>
             <p className="p-2-sale-text">&#8226; Sea view side</p>
-            <button className="button-sale">Book Now</button>
+            <p className="p-2-sale-text-2">
+              Price Bofore: ${" "}
+              {store.tickets.sale[1] && store.tickets.sale[1].priceBefore}{" "}
+              (After ${" "}
+              {store.tickets.sale[1] && store.tickets.sale[1].priceAfter})
+            </p>
+            <p className="p-2-sale-text">
+              Discount: ${" "}
+              {store.tickets.sale[1] && store.tickets.sale[1].discount}
+            </p>
+            <button className="button-sale" onClick={() => handleBook(2)}>
+              Book Now
+            </button>
           </div>
           <div className="div-2-sale-3">
-            <img src="https://preview.colorlib.com/theme/montana/img/offers/x1.png.pagespeed.ic.CPgqevbSyX.webp"></img>
+            <img src="https://preview.colorlib.com/theme/montana/img/offers/x3.png.pagespeed.ic.Y_ffhAZTDD.webp"></img>
             <p className="p-2-sale-title">
               Up to 35% savings on Club rooms and Suites
             </p>
             <p className="p-2-sale-text">&#8226; Luxaries condition</p>
             <p className="p-2-sale-text">&#8226; 3 Adults & 2 Children size</p>
             <p className="p-2-sale-text">&#8226; Sea view side</p>
-            <button className="button-sale">Book Now</button>
+            <p className="p-2-sale-text-2">
+              Price Bofore: ${" "}
+              {store.tickets.sale[2] && store.tickets.sale[2].priceBefore}{" "}
+              (After ${" "}
+              {store.tickets.sale[2] && store.tickets.sale[2].priceAfter})
+            </p>
+            <p className="p-2-sale-text">
+              Discount: ${" "}
+              {store.tickets.sale[2] && store.tickets.sale[2].discount}
+            </p>
+            <button className="button-sale" onClick={() => handleBook(3)}>
+              Book Now
+            </button>
           </div>
         </div>
 

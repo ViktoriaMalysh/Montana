@@ -137,6 +137,12 @@
   font-weight: 300;
 }
 
+.p-2-sale-text-2{
+  font-size: 1.2em;
+  font-family: 'Raleway', 300;
+
+}
+
 .div-3-video{
   grid-area: video1;
   height: 43.5em;
@@ -521,4 +527,538 @@
 
 .p-9-text{
   grid-area: endTitle;
+}
+
+
+@media screen and (max-width: 1300px) {
+  .div-home{
+    background-color: rgba(180, 242, 253, 0.445);
+  }
+  
+  .home {
+    background-color: rgba(148, 234, 255, 0.466);
+    display: grid;
+    grid-template-columns: 1fr  1fr 1fr 1fr;
+    grid-template-areas: 
+    ". slider   slider ."
+    "textAbout textAbout img1 img2"
+    " block1 block1 block1 block1 "
+    "video1 video1 video1 video1 video1 video1"
+    "img41 img42 textAbout4 textAbout4"
+    ". textRoom textRoom .."
+    "room1 room1   room2 room2"
+    "room3 room3   room4 room4"
+    "tell tell tell tell "
+    "instagram instagram   instagram instagram"
+    "endBlock endBlock   endBlock endBlock"
+    ;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .div-home-slider{
+    grid-area: slider;
+  }
+  
+  .div-home-about-text{
+    grid-area: textAbout;
+    padding-top: 12em;
+    margin-left: 7em;
+    margin-right: 5em;
+  }
+  
+  .p-title1{
+    color:rgb(83, 186, 255);
+  }
+  
+  .p-text{
+    font-size: 18px;
+    font-weight: 200;
+    color: rgb(0, 0, 0);
+    font-family: 'Raleway', ;
+    line-height: 28px;
+  }
+  
+  .img-hotel1{
+    grid-area: img1;
+    padding-top: 12em;
+    margin-left: 1em;
+  }
+  
+  .img-hotel2{
+    grid-area: img2;
+    padding-top: 15em;
+    padding-bottom: 10em;
+  }
+  
+  .p-name1{
+    margin-right: 2em;
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+    font-family: 'Raleway', 300;
+    line-height: 80px;
+  }
+  
+  .p-2-title{
+    color:rgb(83, 186, 255);
+  }
+  
+  .p-2-name{
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+    font-family: 'Raleway', 300;
+    line-height: 80px;
+    padding-bottom: 1.3em;
+  }
+  
+  .div-2-page{
+    grid-area: block1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    ". . title1 . ."
+    ". sale1 sale2 sale3 ."
+    ;
+    padding-bottom: 6em;
+  }
+  
+  .div-2-sale-1{
+    grid-area: sale1;
+    padding: 1em;
+  }
+  
+  .div-2-sale-2{
+    grid-area: sale2;
+    padding: 1em;
+  }
+  
+  .div-2-sale-3{
+    grid-area: sale3;
+    padding: 1em;
+  }
+  
+  .div-2-title{
+    grid-area: title1;
+    text-align: center;
+  }
+  
+  .p-2-sale-title{
+    padding-top: 2em;
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+    font-family: 'Raleway', 300;
+    margin-right: 2em;
+  }
+  
+  .button-sale{
+    background-color: white;
+    border-color: rgb(0, 140, 255);
+    color:rgb(0, 140, 255);
+    height: 2.8em;
+    width: 22em;
+    font-weight: 300;
+  }
+  
+  .button-sale:hover{
+    background-color: rgb(0, 140, 255);
+    border-color: rgb(0, 140, 255);
+    color:rgb(255, 255, 255);
+    height: 2.8em;
+    width: 22em;
+    font-weight: 300;
+  }
+  
+  .p-2-sale-text-2{
+    font-size: 1.2em;
+    font-family: 'Raleway', 300;
+  
+  }
+  
+  .div-3-video{
+    grid-area: video1;
+    height: 43.5em;
+    text-align: center;
+    background-size: 100% 700px;
+    background-color: #1f1f1f;
+    background-image: url("https://preview.colorlib.com/theme/montana/img/video/xvideo.png.pagespeed.ic.0n1b-AC7zr.jpg");
+  }
+  
+  .p-3-title{
+    padding-top: 15em;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    font-weight: 300;
+    font-family: 'Raleway', 300;
+  }
+  
+  .p-3-text{
+    text-align: center;
+    font-size: 45px;
+    margin-left: 17em;
+    margin-right: 17em;
+    color: white;
+    font-weight: 300;
+    font-family: 'Raleway', 300;
+  }
+  .overlay {
+    position: relative;
+    z-index: 0;
+  }
+  
+  .overlay::before {
+    position: absolute;
+    content: "";
+    background-color: #1f1f1f;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: .5;
+  }
+  
+  .button-video{
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    line-height: 60px;
+    font-size: 15px;
+    color: #009dff;
+    display: inline-block;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+  }
+  
+  .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .div-4-text{
+    grid-area: textAbout4;
+    padding-top: 12em;
+    margin-left: 3em;
+  }
+  
+  .img-4-hotel1{
+    grid-area: img41;
+    padding-top: 12em;
+    margin-left: 7em;
+  }
+  
+  .img-4-hotel2{
+    grid-area: img42;
+    padding-top: 15em;
+    padding-bottom: 10em;
+    margin-left: 1em;
+  }
+  
+  .p-4-title{
+    color:rgb(83, 186, 255);
+  }
+  
+  .p-4-text{
+    font-size: 18px;
+    font-weight: 200;
+    color: rgb(0, 0, 0);
+    font-family: 'Raleway', ;
+    line-height: 28px;
+    margin-right: 7em;
+  }
+  
+  .p-4-name{
+    margin-right: 2em;
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+    font-family: 'Raleway', 300;
+    line-height: 80px;
+  }
+  
+  .div-5-title{
+    grid-area: textRoom;
+    text-align: center;
+    padding-bottom: 5em;
+  }
+  
+  .p-5-title{
+    color:rgb(83, 186, 255);
+  }
+  
+  .p-5-text{
+    font-size: 49px;
+    text-align: center;
+    color: rgb(3, 3, 3);
+    font-weight: 300;
+    font-family: 'Raleway', 300;
+  }
+  
+  .room1{
+    grid-area: room1;
+    height: 37em;
+    background-size: 100% 600px;
+    background-image: url("https://preview.colorlib.com/theme/montana/img/rooms/x1.png.pagespeed.ic.HDVCJ8JPIU.webp");
+  }
+  
+  .room1:hover{
+    grid-area: room1;
+  
+  
+    
+    height: 37em;
+    background-size: 100% 600px;
+    background-image: url("https://preview.colorlib.com/theme/montana/img/rooms/x1.png.pagespeed.ic.HDVCJ8JPIU.webp");
+  }
+  
+  .room2{
+    grid-area: room2;
+    height: 37em;
+    background-size: 100% 600px;
+    background-image: url("https://preview.colorlib.com/theme/montana/img/rooms/x2.png.pagespeed.ic.LCU3Vu5xDJ.webp");
+  }
+  
+  .room3{
+    grid-area: room3;
+    height: 37em;
+    background-size: 100% 600px;
+    background-image: url("https://preview.colorlib.com/theme/montana/img/rooms/x3.png.pagespeed.ic.-sioOw-vLn.webp");
+  }
+  
+  .room4{
+    grid-area: room4;
+    height: 37em;
+    background-size: 100% 600px;
+    background-image: url("https://preview.colorlib.com/theme/montana/img/rooms/x4.png.pagespeed.ic.uuFeFM0-wO.webp");
+  }
+  
+  .overlay1 {
+    position: relative;
+    z-index: 0;
+  }
+  
+  .overlay1::before {
+    position: absolute;
+    content: "";
+    background-color: #49494994;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: .5;
+  }
+  
+  .room-text{
+    margin-top: 28em;
+    color: white;
+    margin-left: 4em;
+  }
+  
+  .room-price{
+    font-weight: 300;
+    font-family: 'Raleway', ;
+  }
+  
+  .room-title{
+    font-size: 35px;
+    text-align: left;
+    color: white;
+    font-weight: 300;
+    font-family: 'Raleway', 300;
+    letter-spacing:normal;
+  }
+  
+  .div-6-tell{
+    margin-left: 15em;
+    margin-right: 15em;
+    margin-top: 11em;
+    margin-bottom: 11em;
+    /* background-color: blue; */
+    padding-left: 4em;
+    padding-right: 4em;
+    padding-top: 2.5em;
+    padding-bottom: 2.3em;
+    border: 1px solid rgb(160, 160, 160);
+    grid-area: tell;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+      "titleTell titleTell titleTell buttonTell"
+    ;
+  }
+  
+  .p-6-tell{
+    grid-area: titleTell;
+    font-size: 30px;
+    text-align: left;
+    color: black;
+    font-weight: 300;
+    font-family: 'Raleway', ;
+    /* letter-spacing:normal; */
+  }
+  
+  .button-6-tell{
+    grid-area: buttonTell;
+    border-radius: 50px;
+    border: 0px solid rgb(160, 160, 160);
+    background-color: rgba(26, 152, 255, 0.939);
+    color: white;
+    height: 3.5em;
+    width: 16em;
+    font-family: 'Raleway',sans-serif;
+    font-size: 1em;
+  }
+  
+  .div-7-instagram{
+  
+    grid-area: instagram;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+      "img71 img72 img73 img74 img75"
+  }
+  
+  .div-7-img1{
+    grid-area: img71;
+  }
+  
+  .img-7{
+    width: 100%;
+  }
+  
+  .div-7-img2{
+    grid-area: img72;
+  }
+  
+  .div-7-img3{
+    grid-area: img73;
+  }
+  
+  .div-7-img4{
+    grid-area: img74;
+  }
+  
+  .div-7-img5{
+    grid-area: img75;
+  }
+  
+  .div-8-end{
+    padding-top: 9em;
+    padding-bottom: 9em;
+    background-color: black;
+    color: white;
+    grid-area: endBlock;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    ". endBlock1 endBlock2 endBlock3 endBlock4 ."
+    ". . endTitle endTitle . ."
+  }
+  
+  .div-8-block1{
+    grid-area: endBlock1;
+    margin-right: 8em;
+  }
+  
+  .p-8-title1{
+    font-size: 1.5em;
+    font-weight: 300;
+    font-family: 'Raleway', ;
+  }
+  
+  .p-8-text1{
+    font-size: 1em;
+    font-weight: 300;
+    font-family: 'Raleway', ;
+    color: rgb(180, 180, 180);
+  }
+  
+  .div-8-block2{
+    grid-area: endBlock2;
+    margin-right: 8em;
+  }
+  
+  .p-8-title2{
+    font-size: 1.5em;
+    font-weight: 300;
+    font-family: 'Raleway', ;
+  }
+  
+  .p-8-text2{
+    font-size: 1em;
+    font-weight: 300;
+    font-family: 'Raleway', ;
+    color: rgb(180, 180, 180);
+  }
+  
+  .div-8-block3{
+    grid-area: endBlock3;
+  }
+  
+  .p-8-title3{
+    font-size: 1.5em;
+    font-weight: 300;
+    font-family: 'Raleway', ;
+  }
+  
+  .p-8-text31, .p-8-text32, .p-8-text33, .p-8-text34 {
+    font-size: 1em;
+    font-weight: 300;
+    font-family: 'Raleway', ;
+    color: rgb(180, 180, 180);
+  }
+  
+  .div-8-block4{
+    grid-area: endBlock4;
+    margin-left: -5em;
+  }
+  
+  .p-8-title4{
+    font-size: 1.5em;
+    font-weight: 300;
+    font-family: 'Raleway', ;
+  }
+  
+  .p-8-text4{
+    font-size: 1em;
+    font-weight: 300;
+    font-family: 'Raleway', ;
+    color: rgb(180, 180, 180);
+  }
+  
+  .button-8-auth{
+    background-color: blue;
+  }
+  
+  .form-8{
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .input-8-sign{
+    padding-left: 1em;
+    height: 3em;
+    border-color: white;
+  }
+  
+  .button-8-sign{
+    background-color:rgb(0, 140, 255);
+    width: 6em;
+    color: white;
+    height: 3em;
+    border-color: rgb(83, 186, 255);
+  }
+  
+  .p-9-text{
+    grid-area: endTitle;
+  }
 }

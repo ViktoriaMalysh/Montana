@@ -16,6 +16,9 @@ router.post("/cancelBooking", ticketsPoint.cancelBooking);
 //localhost:8000/tickets/showMyBookingTicket
 router.post("/showMyBookingTicket", ticketsPoint.showMyBookingTicket);
 
+//localhost:8000/tickets/showSaleTicket
+router.post("/showSaleTicket", ticketsPoint.showSaleTicket);
+
 //localhost:8000/tickets/payment
 router.post("/payment",cors(), ticketsPoint.payment);
 

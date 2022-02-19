@@ -8,7 +8,6 @@ import { deleteTickets, showMyTickets } from "../redux/actionTickets";
 import { CURRENT_PRICE, DELETE } from "../redux/types";
 import StripeContainer from "../components/StripeContainer";
 
-
 function Profile() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
@@ -16,7 +15,6 @@ function Profile() {
   const loading = useSelector((state) => state.app.loading);
   const [more, setMore] = useState(false);
   const [show, setShow] = useState(false);
-
 
   useEffect(() => {
     dispatch(showMyTickets(store.users.userId));
@@ -54,13 +52,12 @@ function Profile() {
   };
 
   const buyTicket = (id, price) => {
-setShow(true)
-
+    setShow(true);
   };
 
   return (
     <div className="div-page-profile">
-       <Modal
+      <Modal
         show={show}
         onHide={() => handleClose()}
         backdrop="static"
@@ -70,17 +67,7 @@ setShow(true)
           <Modal.Title className="modal-title">Warning</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* <div className="div-body">
-            <p className="p-book-hotel">Enter your password to save changes</p>
-            <input
-              className="input-pass-save-change"
-              type="password"
-              name="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div> */}
-    <StripeContainer />
-
+          <StripeContainer />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -188,7 +175,7 @@ setShow(true)
                     Cancel Book
                   </button>
                   <button
-                    className="button-settings"
+                    className="button-buy-ticket"
                     onClick={() => buyTicket(item.id, item.price)}
                   >
                     Buy a Ticket

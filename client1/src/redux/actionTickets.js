@@ -12,6 +12,7 @@ import {
   SHOW_LOADER,
   SHOW_MY_TICKETS,
   SHOW_TICKETS,
+  SHOW_SALE
 } from "./types";
 
 const requestTickets = () => {
@@ -104,6 +105,26 @@ export const showMyTickets = (id) => {
           dispatch({ type: SHOW_MY_TICKETS, payload: res.data })
           console.log('res', res.data)
         }
+      })
+      .then(
+        (data) => dispatch(requestSuccessTickets()),
+        dispatch({ type: SHOW_LOADER }),
+        setTimeout(() => {
+          dispatch({ type: HIDE_LOADER });
+        }, 300),
+        dispatch({ type: REQUESTED_SUCCEEDED_CLOSE_TICKET }),
+        (err) => dispatch(requestErrorTickets(err, 'Project not found'))
+      );
+  };
+};
+
+export const showSaleTickets = () => {
+  return (dispatch) => {
+    dispatch(requestTickets());
+    axios
+      .post(`http://localhost:8000/tickets/showSaleTicket`, {})
+      .then((res) => {
+        dispatch({ type: SHOW_SALE, payload: res.data })
       })
       .then(
         (data) => dispatch(requestSuccessTickets()),

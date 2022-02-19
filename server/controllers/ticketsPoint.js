@@ -1,4 +1,4 @@
-const { HotelTicket } = require("../sequelize");
+const { HotelTicket, SaleHotelTicket } = require("../sequelize");
 const sequelize = require("../sequelize");
 // const dotenv = require('dotenv')
 const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST)
@@ -60,6 +60,20 @@ module.exports.showMyBookingTicket = async function (req, res) {
     await HotelTicket.sequelize.sync({ alter: true });
     const id = req.body.id;
     await HotelTicket.findAll({ where: { id_user: id }, raw: true })
+      .then((result) => {
+        res.send(result);
+      })
+      .catch((err) => console.log(err));
+  } catch (err) {
+    console.log("Error: " + err);
+    res.status(404).json({ flag: true });
+  }
+};
+
+module.exports.showSaleTicket = async function (req, res) {
+  try {
+    await SaleHotelTicket.sequelize.sync({ alter: true });
+    await SaleHotelTicket.findAll({ raw: true })
       .then((result) => {
         res.send(result);
       })

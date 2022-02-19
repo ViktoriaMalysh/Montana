@@ -1,23 +1,9 @@
 .slider {
   background-size: 100% 700px;
-  /* height: 30em; */
 }
-
-/* .sl{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: " slider slider slider";
-} */
-/* .sliderBar{ */
-/* grid-area: slider; */
-/* margin-left: 10em; */
-/* margin-right: 10em; */
-/* } */
 
 .img-slider {
   height: 58em;
-  /* margin-left: 6em;
-  margin-right: 6em; */
 }
 
 .div-slider {
@@ -47,10 +33,8 @@
 
 .img-montana {
   grid-area: img3;
-  /* margin-inline: 13em; */
+  width: 50%;
 }
-
-
 
 .button-booking {
   grid-area: button1;
@@ -72,4 +56,73 @@
 .img-icon3{
   grid-area: icon3;
   padding-top: 0.7em;
+}
+
+@media screen and (max-width: 1300px) {
+  .slider {
+    background-size: 100% 100px;
+  }
+  
+  .img-slider {
+    height: 30em;
+  }
+  
+  .div-slider {
+    background-color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .h-slider-title {
+    font-size: 7em;
+    font-weight: 300;
+  }
+  
+  .p-slider-title {
+    font-size: 1.7em;
+    font-weight: 300;
+  }
+  
+  .div-page {
+    padding-block-end: 20em;
+  }
+  
+  .div-slider-header {
+    padding-block-end: 13em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: ". . . . . . img3 . . icon1 icon2 icon3 button1";
+  }
+  
+  .img-montana {
+    grid-area: img3;
+  }
+  
+  .button-booking {
+    grid-area: button1;
+   background-color: rgb(34, 156, 255);
+    color: aliceblue;
+    height: 3em;
+    width: 10em;
+  }
+  
+  
+  .img-icon1{
+    grid-area: icon1;
+    padding-top: 0.7em;
+  }
+  .img-icon2{
+    grid-area: icon2;
+    padding-top: 0.7em;
+  }
+  .img-icon3{
+    grid-area: icon3;
+    padding-top: 0.7em;
+  }
+
+}
+
+
+@media screen and (max-width: 1000px) {
+  .slider {
+    background-size: 100% 100px;
+  }
 }

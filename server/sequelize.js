@@ -38,6 +38,8 @@ const SaleHotelTicket = sequelize.define("saleTickets", {
   priceBefore: DataTypes.INTEGER,
   priceAfter: DataTypes.INTEGER,
   discount: DataTypes.INTEGER,
+  url: DataTypes.TEXT,
+
 });
 
 module.exports = {
